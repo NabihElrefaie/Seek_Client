@@ -1,0 +1,11 @@
+C:\Users\nabih\source\repos\Seek.ZATCA\Seek.ZATCA.Core\bin\Debug\net8.0\Seek.ZATCA.Core.deps.json
+C:\Users\nabih\source\repos\Seek.ZATCA\Seek.ZATCA.Core\bin\Debug\net8.0\Seek.ZATCA.Core.dll
+C:\Users\nabih\source\repos\Seek.ZATCA\Seek.ZATCA.Core\bin\Debug\net8.0\Seek.ZATCA.Core.pdb
+C:\Users\nabih\source\repos\Seek.ZATCA\Seek.ZATCA.Core\obj\Debug\net8.0\Seek.ZATCA.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nabih\source\repos\Seek.ZATCA\Seek.ZATCA.Core\obj\Debug\net8.0\Seek.ZATCA.Core.AssemblyInfoInputs.cache
+C:\Users\nabih\source\repos\Seek.ZATCA\Seek.ZATCA.Core\obj\Debug\net8.0\Seek.ZATCA.Core.AssemblyInfo.cs
+C:\Users\nabih\source\repos\Seek.ZATCA\Seek.ZATCA.Core\obj\Debug\net8.0\Seek.ZATCA.Core.csproj.CoreCompileInputs.cache
+C:\Users\nabih\source\repos\Seek.ZATCA\Seek.ZATCA.Core\obj\Debug\net8.0\Seek.ZATCA.Core.dll
+C:\Users\nabih\source\repos\Seek.ZATCA\Seek.ZATCA.Core\obj\Debug\net8.0\refint\Seek.ZATCA.Core.dll
+C:\Users\nabih\source\repos\Seek.ZATCA\Seek.ZATCA.Core\obj\Debug\net8.0\Seek.ZATCA.Core.pdb
+C:\Users\nabih\source\repos\Seek.ZATCA\Seek.ZATCA.Core\obj\Debug\net8.0\ref\Seek.ZATCA.Core.dll

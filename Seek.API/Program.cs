@@ -1,42 +1,25 @@
-using Seek.API;
-using Serilog;
-using Serilog.Events;
+var builder = WebApplication.CreateBuilder(args);
 
-internal class Program
+// Add services to the container.
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
 {
-    public static void Main(string[] args)
-    {
-        // Configure Serilog early
-        Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Debug()
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-            .Enrich.FromLogContext()
-            .WriteTo.Console()
-            .WriteTo.File("Logs/Seek_.log", rollingInterval: RollingInterval.Day)
-            .CreateBootstrapLogger();
-
-        try
-        {
-            Log.Information("System : Starting web host");
-            CreateHostBuilder(args).Build().Run();
-        }
-        catch (Exception ex)
-        {
-            Log.Fatal(ex, "System : Host terminated unexpectedly");
-        }
-        finally
-        {
-            Log.CloseAndFlush();
-        }
-    }
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .UseSerilog((context, services, configuration) => configuration
-                .ReadFrom.Configuration(context.Configuration)
-                .ReadFrom.Services(services)
-                .Enrich.FromLogContext())
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseStartup<StartUp>();
-            });
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
