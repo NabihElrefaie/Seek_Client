@@ -1,6 +1,0 @@
-@Seek.ZATCAControl_HostAddress = http://localhost:5052
-
-GET {{Seek.ZATCAControl_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
