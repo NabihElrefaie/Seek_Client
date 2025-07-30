@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XrKbH0FI18E=",
+  "dgSpecHash": "jOo/3is/pVo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\nabih\\source\\repos\\Seek_ClientSide\\Seek.API\\Seek.API.csproj",
+  "projectFilePath": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Seek.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nabih\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\nabih\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

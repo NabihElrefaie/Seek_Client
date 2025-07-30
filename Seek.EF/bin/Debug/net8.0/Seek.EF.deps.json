@@ -15,9 +15,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "9.0.7",
           "QRCoder": "1.6.0",
           "Seek.Core": "1.0.0",
-          "System.Security.Cryptography.Xml": "9.0.7",
-          "Zatca.EInvoice.SDK.Contracts": "3.4.3.0",
-          "Zatca.EInvoice.SDK": "3.4.3.0"
+          "System.Security.Cryptography.Xml": "9.0.7"
         },
         "runtime": {
           "Seek.EF.dll": {}
@@ -1449,62 +1447,6 @@
             "fileVersion": "1.0.0.0"
           }
         }
-      },
-      "Zatca.EInvoice.SDK.Contracts/3.4.3.0": {
-        "runtime": {
-          "Zatca.EInvoice.SDK.Contracts.dll": {
-            "assemblyVersion": "3.4.3.0",
-            "fileVersion": "3.4.3.0"
-          }
-        }
-      },
-      "Zatca.EInvoice.SDK/3.4.3.0": {
-        "runtime": {
-          "Zatca.EInvoice.SDK.dll": {
-            "assemblyVersion": "3.4.3.0",
-            "fileVersion": "3.4.3.0"
-          }
-        }
-      },
-      "BouncyCastle.Crypto/1.9.0.0": {
-        "runtime": {
-          "BouncyCastle.Crypto.dll": {
-            "assemblyVersion": "1.9.0.0",
-            "fileVersion": "1.9.0.1"
-          }
-        }
-      },
-      "Zatca.EInvoice.SDK.Saxon/3.4.3.0": {
-        "runtime": {
-          "Zatca.EInvoice.SDK.Saxon.dll": {
-            "assemblyVersion": "3.4.3.0",
-            "fileVersion": "3.4.3.0"
-          }
-        }
-      },
-      "Newtonsoft.Json/13.0.0.0": {
-        "runtime": {
-          "Newtonsoft.Json.dll": {
-            "assemblyVersion": "13.0.0.0",
-            "fileVersion": "13.0.3.27908"
-          }
-        }
-      },
-      "saxon/1.0.0.0": {
-        "runtime": {
-          "saxon.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "xerces/1.0.0.0": {
-        "runtime": {
-          "xerces.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
       }
     }
   },
@@ -2258,41 +2200,6 @@
     },
     "Seek.Core/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Zatca.EInvoice.SDK.Contracts/3.4.3.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Zatca.EInvoice.SDK/3.4.3.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "BouncyCastle.Crypto/1.9.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Zatca.EInvoice.SDK.Saxon/3.4.3.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Newtonsoft.Json/13.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "saxon/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "xerces/1.0.0.0": {
-      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

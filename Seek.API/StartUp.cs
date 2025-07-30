@@ -23,16 +23,18 @@ namespace Seek.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // 🆕 Ensure the Db folder exists
-            var dbFolderPath = Path.Combine(AppContext.BaseDirectory, "Db");
+            var projectRoot = Directory.GetCurrentDirectory();
+            var dbFolderPath = Path.Combine(projectRoot, "Database");
+
             if (!Directory.Exists(dbFolderPath))
             {
                 Directory.CreateDirectory(dbFolderPath);
             }
 
-            // 🆕 Configure SQLite DbContext
+            var connectionString = _configuration.GetConnectionString("DefaultConnection");
+
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(_configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite(connectionString));
 
             // Add services to the container
             services.AddCors();
