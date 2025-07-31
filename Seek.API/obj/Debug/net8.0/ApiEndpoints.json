@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "ContainingType": "Seek.API.Controllers.DatabaseSecurityController",
+    "Method": "TransformDatabase",
+    "RelativePath": "api/DatabaseSecurity/transform",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Seek.Core.Helper_Classes.TransformRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "api-version",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

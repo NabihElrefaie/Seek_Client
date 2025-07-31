@@ -23,6 +23,9 @@ namespace Seek.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // Initialize SQLCipher
+            SQLitePCL.Batteries_V2.Init();
+
             var projectRoot = Directory.GetCurrentDirectory();
             var dbFolderPath = Path.Combine(projectRoot, "Database");
 
@@ -32,9 +35,32 @@ namespace Seek.API
             }
 
             var connectionString = _configuration.GetConnectionString("DefaultConnection");
+            var encryptionKey = _configuration["EncryptionKey"];
+            // Register the interceptor as a singleton
+            services.AddSingleton<SqliteEncryptionInterceptor>(provider =>
+            {
+                var logger = provider.GetRequiredService<ILogger<SqliteEncryptionInterceptor>>();
+                var encryptionKey = _configuration["EncryptionKey"];
+                if (string.IsNullOrWhiteSpace(encryptionKey))
+                {
+                    Log.Error("Missing SQLite encryption key. Set SqliteEncryptionKey as an environment variable.");
+                }
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(connectionString));
+                return new SqliteEncryptionInterceptor(encryptionKey, logger);
+            });
+            // Register the DbContext with the interceptor
+            services.AddDbContext<ApplicationDbContext>((serviceProvider, options) =>
+            {
+                var interceptor = serviceProvider.GetRequiredService<SqliteEncryptionInterceptor>();
+
+                options.UseSqlite(connectionString, sqliteOptions =>
+                {
+                    sqliteOptions.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);
+                    sqliteOptions.CommandTimeout(600);
+                });
+
+                options.AddInterceptors(interceptor);
+            });
 
             // Add services to the container
             services.AddCors();
@@ -76,10 +102,21 @@ namespace Seek.API
             {
                 var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-                // ✅ Create DB if it doesn't exist and apply migrations
+                // Manually apply PRAGMA key before EF migration
+                var conn = dbContext.Database.GetDbConnection();
+                conn.Open();
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    var key = _configuration["EncryptionKey"];
+                    cmd.CommandText = $"PRAGMA key = '{key}';";
+                    cmd.ExecuteNonQuery();
+                }
+
+                // NOW apply migrations
                 dbContext.Database.Migrate();
 
-                // ✅ Seed default data
+                // Seed default data
                 var defaultDataService = scope.ServiceProvider.GetRequiredService<DefaultDataService>();
                 defaultDataService.EnsureDefaultDataAsync().GetAwaiter().GetResult();
             }

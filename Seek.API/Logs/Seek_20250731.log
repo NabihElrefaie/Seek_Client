@@ -1,0 +1,732 @@
+2025-07-31 09:07:34.344 +03:00 [INF] System : Starting web host
+2025-07-31 09:07:36.088 +03:00 INF SQLite : encryption key applied successfully.
+2025-07-31 09:07:36.136 +03:00 ERR Failed executing DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2025-07-31 09:07:36.158 +03:00 FTL Application startup exception
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2025-07-31 09:07:36.225 +03:00 ERR Hosting failed to start
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-07-31 09:07:36.298 +03:00 FTL System : Host terminated unexpectedly
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.Main(String[] args) in C:\Users\nabih\github\Seek_Client\Seek.API\Program.cs:line 21
+2025-07-31 09:07:52.191 +03:00 [INF] System : Starting web host
+2025-07-31 09:07:53.332 +03:00 INF SQLite : encryption key applied successfully.
+2025-07-31 09:07:53.371 +03:00 ERR Failed executing DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2025-07-31 09:07:53.392 +03:00 FTL Application startup exception
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2025-07-31 09:07:53.433 +03:00 ERR Hosting failed to start
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-07-31 09:07:53.574 +03:00 FTL System : Host terminated unexpectedly
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.Main(String[] args) in C:\Users\nabih\github\Seek_Client\Seek.API\Program.cs:line 21
+2025-07-31 09:08:01.927 +03:00 [INF] System : Starting web host
+2025-07-31 09:08:03.085 +03:00 INF SQLite : encryption key applied successfully.
+2025-07-31 09:08:03.221 +03:00 ERR Failed executing DbCommand (119ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2025-07-31 09:08:03.245 +03:00 FTL Application startup exception
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2025-07-31 09:08:03.289 +03:00 ERR Hosting failed to start
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-07-31 09:08:03.343 +03:00 FTL System : Host terminated unexpectedly
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.Main(String[] args) in C:\Users\nabih\github\Seek_Client\Seek.API\Program.cs:line 21
+2025-07-31 09:08:57.486 +03:00 [INF] System : Starting web host
+2025-07-31 09:08:59.918 +03:00 INF SQLite : encryption key applied successfully.
+2025-07-31 09:08:59.954 +03:00 ERR Failed executing DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2025-07-31 09:08:59.976 +03:00 FTL Application startup exception
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2025-07-31 09:09:00.028 +03:00 ERR Hosting failed to start
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-07-31 09:09:00.082 +03:00 FTL System : Host terminated unexpectedly
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.Main(String[] args) in C:\Users\nabih\github\Seek_Client\Seek.API\Program.cs:line 21
+2025-07-31 09:09:09.701 +03:00 [INF] System : Starting web host
+2025-07-31 09:09:10.795 +03:00 INF SQLite : encryption key applied successfully.
+2025-07-31 09:09:10.832 +03:00 ERR Failed executing DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2025-07-31 09:09:10.855 +03:00 FTL Application startup exception
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2025-07-31 09:09:10.902 +03:00 ERR Hosting failed to start
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-07-31 09:09:10.962 +03:00 FTL System : Host terminated unexpectedly
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.Main(String[] args) in C:\Users\nabih\github\Seek_Client\Seek.API\Program.cs:line 21
+2025-07-31 09:10:00.477 +03:00 [INF] System : Starting web host
+2025-07-31 09:10:01.560 +03:00 INF SQLite : encryption key applied successfully.
+2025-07-31 09:10:01.596 +03:00 ERR Failed executing DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2025-07-31 09:10:01.615 +03:00 FTL Application startup exception
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2025-07-31 09:10:01.655 +03:00 ERR Hosting failed to start
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-07-31 09:10:01.708 +03:00 FTL System : Host terminated unexpectedly
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.Main(String[] args) in C:\Users\nabih\github\Seek_Client\Seek.API\Program.cs:line 21
+2025-07-31 09:10:53.973 +03:00 [INF] System : Starting web host
+2025-07-31 09:10:55.023 +03:00 INF SQLite : encryption key applied successfully.
+2025-07-31 09:10:55.548 +03:00 INF System : Creating Default Data By System
+2025-07-31 09:10:55.549 +03:00 INF System : Ending Creating Default Data
+2025-07-31 09:10:55.551 +03:00 INF System : Starting in development environment
+2025-07-31 09:12:05.137 +03:00 [INF] System : Starting web host
+2025-07-31 09:12:06.262 +03:00 INF SQLite : encryption key applied successfully.
+2025-07-31 09:12:06.312 +03:00 ERR Failed executing DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2025-07-31 09:12:06.338 +03:00 FTL Application startup exception
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2025-07-31 09:12:06.393 +03:00 ERR Hosting failed to start
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-07-31 09:12:06.450 +03:00 FTL System : Host terminated unexpectedly
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.Main(String[] args) in C:\Users\nabih\github\Seek_Client\Seek.API\Program.cs:line 21
+2025-07-31 09:12:43.394 +03:00 [INF] System : Starting web host
+2025-07-31 09:12:44.540 +03:00 INF SQLite : encryption key applied successfully.
+2025-07-31 09:12:44.589 +03:00 ERR Failed executing DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2025-07-31 09:12:44.617 +03:00 FTL Application startup exception
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2025-07-31 09:12:44.658 +03:00 ERR Hosting failed to start
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-07-31 09:12:44.709 +03:00 FTL System : Host terminated unexpectedly
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 26: 'file is not a database'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements()+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteScalar()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteScalar(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Sqlite.Migrations.Internal.SqliteHistoryRepository.AcquireDatabaseLock()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at Seek.API.StartUp.Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider) in C:\Users\nabih\github\Seek_Client\Seek.API\StartUp.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.Extensions.DependencyInjection.AutoRegisterMiddleware.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.WebTools.ApiEndpointDiscovery.HostingStartup.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.Main(String[] args) in C:\Users\nabih\github\Seek_Client\Seek.API\Program.cs:line 21
+2025-07-31 09:17:03.472 +03:00 [INF] System : Starting web host
+2025-07-31 09:17:04.495 +03:00 INF SQLite : encryption key applied successfully.
+2025-07-31 09:17:04.980 +03:00 INF System : Creating Default Data By System
+2025-07-31 09:17:04.982 +03:00 INF System : Ending Creating Default Data
+2025-07-31 09:17:04.986 +03:00 INF System : Starting in development environment
+2025-07-31 09:17:13.803 +03:00 [INF] System : Starting web host
+2025-07-31 09:17:14.845 +03:00 INF SQLite : encryption key applied successfully.
+2025-07-31 09:17:15.306 +03:00 INF System : Creating Default Data By System
+2025-07-31 09:17:15.307 +03:00 INF System : Ending Creating Default Data
+2025-07-31 09:17:15.310 +03:00 INF System : Starting in development environment
+2025-07-31 09:17:32.830 +03:00 ERR SQLite : Failed to decrypt database.
+System.IO.IOException: The process cannot access the file 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' because it is being used by another process.
+   at System.IO.FileSystem.DeleteFile(String fullPath)
+   at Seek.EF.Repositories.Repo_Database_Security.DecryptDatabaseAsync(String encryptedDbPath, String plainDbPath, String encryptionKey) in C:\Users\nabih\github\Seek_Client\Seek.EF\Repositories\Repo_Database_Security.cs:line 43
+2025-07-31 09:21:38.137 +03:00 [INF] System : Starting web host
+2025-07-31 09:21:39.268 +03:00 INF SQLite : encryption key applied successfully.
+2025-07-31 09:21:39.790 +03:00 INF System : Creating Default Data By System
+2025-07-31 09:21:39.791 +03:00 INF System : Ending Creating Default Data
+2025-07-31 09:21:39.794 +03:00 INF System : Starting in development environment
+2025-07-31 09:21:56.657 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (1/10)...
+2025-07-31 09:21:56.997 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (2/10)...
+2025-07-31 09:21:57.327 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (3/10)...
+2025-07-31 09:21:57.655 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (4/10)...
+2025-07-31 09:21:57.980 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (5/10)...
+2025-07-31 09:21:58.303 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (6/10)...
+2025-07-31 09:21:58.627 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (7/10)...
+2025-07-31 09:21:58.954 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (8/10)...
+2025-07-31 09:21:59.279 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (9/10)...
+2025-07-31 09:21:59.596 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (10/10)...
+2025-07-31 09:21:59.935 +03:00 ERR SQLite: Failed to decrypt database.
+System.IO.IOException: SQLite: Timeout waiting for file 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' to be unlocked.
+   at Seek.EF.Repositories.Repo_Database_Security.EnsureFileIsNotLocked(String filePath, Int32 retries, Int32 delayMs) in C:\Users\nabih\github\Seek_Client\Seek.EF\Repositories\Repo_Database_Security.cs:line 121
+   at Seek.EF.Repositories.Repo_Database_Security.DecryptDatabaseAsync(String encryptedDbPath, String plainDbPath, String encryptionKey) in C:\Users\nabih\github\Seek_Client\Seek.EF\Repositories\Repo_Database_Security.cs:line 23
+2025-07-31 09:47:32.641 +03:00 [INF] System : Starting web host
+2025-07-31 09:47:33.853 +03:00 INF SQLite : encryption key applied successfully.
+2025-07-31 09:47:34.303 +03:00 INF System : Creating Default Data By System
+2025-07-31 09:47:34.304 +03:00 INF System : Ending Creating Default Data
+2025-07-31 09:47:34.308 +03:00 INF System : Starting in development environment
+2025-07-31 09:47:43.016 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (1/10)...
+2025-07-31 09:47:43.345 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (2/10)...
+2025-07-31 09:47:43.663 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (3/10)...
+2025-07-31 09:47:43.990 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (4/10)...
+2025-07-31 09:47:44.313 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (5/10)...
+2025-07-31 09:47:44.630 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (6/10)...
+2025-07-31 09:47:44.958 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (7/10)...
+2025-07-31 09:47:45.289 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (8/10)...
+2025-07-31 09:47:45.612 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (9/10)...
+2025-07-31 09:47:45.946 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (10/10)...
+2025-07-31 09:47:46.284 +03:00 ERR SQLite: Failed to decrypt database.
+System.IO.IOException: SQLite: Timeout waiting for file 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' to be unlocked.
+   at Seek.EF.Repositories.Repo_Database_Security.EnsureFileIsNotLocked(String filePath, Int32 retries, Int32 delayMs) in C:\Users\nabih\github\Seek_Client\Seek.EF\Repositories\Repo_Database_Security.cs:line 142
+   at Seek.EF.Repositories.Repo_Database_Security.DecryptDatabaseAsync(String encryptedDbPath, String plainDbPath, String encryptionKey) in C:\Users\nabih\github\Seek_Client\Seek.EF\Repositories\Repo_Database_Security.cs:line 30
+2025-07-31 09:50:13.743 +03:00 [INF] System : Starting web host
+2025-07-31 09:50:14.815 +03:00 INF SQLite : encryption key applied successfully.
+2025-07-31 09:50:15.263 +03:00 INF System : Creating Default Data By System
+2025-07-31 09:50:15.263 +03:00 INF System : Ending Creating Default Data
+2025-07-31 09:50:15.266 +03:00 INF System : Starting in development environment
+2025-07-31 09:50:28.832 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (1/10)...
+2025-07-31 09:50:29.159 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (2/10)...
+2025-07-31 09:50:29.483 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (3/10)...
+2025-07-31 09:50:29.801 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (4/10)...
+2025-07-31 09:50:30.129 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (5/10)...
+2025-07-31 09:50:30.455 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (6/10)...
+2025-07-31 09:50:30.778 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (7/10)...
+2025-07-31 09:50:31.103 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (8/10)...
+2025-07-31 09:50:31.430 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (9/10)...
+2025-07-31 09:50:31.761 +03:00 WRN SQLite: File 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' is locked. Retrying (10/10)...
+2025-07-31 09:50:32.094 +03:00 ERR SQLite: Failed to decrypt database.
+System.IO.IOException: SQLite: Timeout waiting for file 'C:\Users\nabih\github\Seek_Client\Seek.API\Database\seek.db' to be unlocked.
+   at Seek.EF.Repositories.Repo_Database_Security.EnsureFileIsNotLocked(String filePath, Int32 retries, Int32 delayMs) in C:\Users\nabih\github\Seek_Client\Seek.EF\Repositories\Repo_Database_Security.cs:line 142
+   at Seek.EF.Repositories.Repo_Database_Security.DecryptDatabaseAsync(String encryptedDbPath, String plainDbPath, String encryptionKey) in C:\Users\nabih\github\Seek_Client\Seek.EF\Repositories\Repo_Database_Security.cs:line 30

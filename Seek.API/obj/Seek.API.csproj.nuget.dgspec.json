@@ -88,6 +88,10 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "SQLitePCLRaw.bundle_e_sqlcipher": {
+              "target": "Package",
+              "version": "[2.1.11, )"
+            },
             "Serilog.AspNetCore": {
               "target": "Package",
               "version": "[9.0.0, )"
