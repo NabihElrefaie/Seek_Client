@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Data.Common;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ public class SqliteEncryptionInterceptor : DbConnectionInterceptor
 {
     private readonly string _encryptionKey;
     private readonly ILogger<SqliteEncryptionInterceptor> _logger;
-    private bool _isKeyApplied = false; // Add this flag
+    private bool _isKeyApplied = false;
 
     public SqliteEncryptionInterceptor(string encryptionKey, ILogger<SqliteEncryptionInterceptor> logger)
     {

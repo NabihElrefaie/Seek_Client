@@ -7,6 +7,7 @@ using Seek.Core;
 using Seek.EF;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Data.Common;
 using System.Text;
 
 namespace Seek.API
@@ -15,6 +16,7 @@ namespace Seek.API
     {
         private readonly IConfiguration _configuration;
         private readonly IWebHostEnvironment _environment;
+
         public StartUp(IConfiguration configuration, IWebHostEnvironment environment)
         {
             _configuration = configuration;
@@ -36,18 +38,19 @@ namespace Seek.API
 
             var connectionString = _configuration.GetConnectionString("DefaultConnection");
             var encryptionKey = _configuration["EncryptionKey"];
+
             // Register the interceptor as a singleton
             services.AddSingleton<SqliteEncryptionInterceptor>(provider =>
             {
                 var logger = provider.GetRequiredService<ILogger<SqliteEncryptionInterceptor>>();
-                var encryptionKey = _configuration["EncryptionKey"];
                 if (string.IsNullOrWhiteSpace(encryptionKey))
                 {
-                    Log.Error("Missing SQLite encryption key. Set SqliteEncryptionKey as an environment variable.");
+                    Log.Error("Missing SQLite encryption key. Set SQLite Encryption Key as an environment variable.");
                 }
 
                 return new SqliteEncryptionInterceptor(encryptionKey, logger);
             });
+
             // Register the DbContext with the interceptor
             services.AddDbContext<ApplicationDbContext>((serviceProvider, options) =>
             {
@@ -64,17 +67,9 @@ namespace Seek.API
 
             // Add services to the container
             services.AddCors();
-
-            // ContextAccessor :-  For Station Access Filter
             services.AddHttpContextAccessor();
-
-            // Injection of Repositories and Interfaces
             services.AddRepositoryServices();
-
-            // Add AutoMapper
             services.AddAutoMapper(typeof(Mappings).Assembly);
-
-            // Register DefaultDataService as a scoped service
             services.AddScoped<DefaultDataService>();
 
             // Add Versioning
@@ -90,8 +85,6 @@ namespace Seek.API
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             services.AddSwaggerGen();
 
-            // JWT Authentication (to be added later)
-
             // Add controllers
             services.AddControllers();
         }
@@ -102,15 +95,42 @@ namespace Seek.API
             {
                 var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-                // Manually apply PRAGMA key before EF migration
                 var conn = dbContext.Database.GetDbConnection();
                 conn.Open();
 
+                // First, set the PRAGMA key for encryption
+                var encryptionKey = _configuration["EncryptionKey"];
                 using (var cmd = conn.CreateCommand())
                 {
-                    var key = _configuration["EncryptionKey"];
-                    cmd.CommandText = $"PRAGMA key = '{key}';";
+                    cmd.CommandText = $"PRAGMA key = '{encryptionKey}';";
                     cmd.ExecuteNonQuery();
+                }
+
+                // Now check if the database is encrypted
+                if (!IsDatabaseEncrypted(conn))
+                {
+                    Log.Warning("Database is not encrypted. Attempting to encrypt...");
+                    EncryptDatabase(conn, encryptionKey);
+
+                    // Move the current database to a backup folder with timestamp
+                    var backupFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "Database_Backups");
+                    if (!Directory.Exists(backupFolderPath))
+                    {
+                        Directory.CreateDirectory(backupFolderPath);
+                    }
+
+                    var timestamp = DateTime.UtcNow.ToString("yyyyMMdd_HHmmss");
+                    var backupFilePath = Path.Combine(backupFolderPath, $"backup_{timestamp}.db");
+
+                    var currentDbFilePath = new Uri(conn.ConnectionString).LocalPath;
+                    if (File.Exists(currentDbFilePath))
+                    {
+                        File.Copy(currentDbFilePath, backupFilePath);
+                        Log.Information($"Database backup created at: {backupFilePath}");
+                    }
+
+                    // Optionally, handle further failure here (perhaps stop execution)
+                    throw new Exception("Database is not encrypted, backup created.");
                 }
 
                 // NOW apply migrations
@@ -156,6 +176,32 @@ namespace Seek.API
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private bool IsDatabaseEncrypted(DbConnection connection)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                // SQLite command to check if the database is encrypted
+                command.CommandText = "PRAGMA cipher_version;";
+                try
+                {
+                    var result = command.ExecuteScalar();
+                    return result != null;
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("Error checking database encryption: " + ex.Message);
+                    return false; // If it fails, the database is not encrypted
+                }
+            }
+        }
+        private void EncryptDatabase(DbConnection connection, string key)
+        {
+            using var command = connection.CreateCommand();
+            command.CommandText = $"PRAGMA rekey = '{key}';";
+            command.ExecuteNonQuery();
+            Log.Information("Database encryption completed successfully.");
         }
     }
 }

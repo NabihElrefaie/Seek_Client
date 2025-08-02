@@ -15,7 +15,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/DatabaseSecurity/transform": {
+    "/api/DatabaseSecurity/Decrypt": {
       "post": {
         "tags": [
           "DatabaseSecurity"
@@ -54,6 +54,34 @@
           }
         }
       }
+    },
+    "/api/DatabaseSecurity/Encrypt": {
+      "post": {
+        "tags": [
+          "DatabaseSecurity"
+        ],
+        "parameters": [
+          {
+            "name": "databasePath",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "api-version",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -64,9 +92,6 @@
           "encryption_Key": {
             "type": "string",
             "nullable": true
-          },
-          "is_Encrypt": {
-            "type": "boolean"
           }
         },
         "additionalProperties": false

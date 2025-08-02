@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\nabih\\github\\Seek_Client\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|c:\\users\\nabih\\github\\seek_client\\seek.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|solutionrelative:seek.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|c:\\users\\nabih\\github\\seek_client\\seek.api\\services\\interceptors\\sqliteencryptioninterceptor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|solutionrelative:seek.api\\services\\interceptors\\sqliteencryptioninterceptor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|c:\\users\\nabih\\github\\seek_client\\seek.api\\controllers\\databasesecuritycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|solutionrelative:seek.api\\controllers\\databasesecuritycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8B49C3CB-F353-4BC6-812A-861B8540DBA6}|Seek.EF\\Seek.EF.csproj|c:\\users\\nabih\\github\\seek_client\\seek.ef\\repositories\\repo_database_security.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8B49C3CB-F353-4BC6-812A-861B8540DBA6}|Seek.EF\\Seek.EF.csproj|solutionrelative:seek.ef\\repositories\\repo_database_security.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|c:\\users\\nabih\\github\\seek_client\\seek.api\\services\\interceptors\\backgroundjobservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|solutionrelative:seek.api\\services\\interceptors\\backgroundjobservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B49C3CB-F353-4BC6-812A-861B8540DBA6}|Seek.EF\\Seek.EF.csproj|c:\\users\\nabih\\github\\seek_client\\seek.ef\\repositories\\services\\maintenanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B49C3CB-F353-4BC6-812A-861B8540DBA6}|Seek.EF\\Seek.EF.csproj|solutionrelative:seek.ef\\repositories\\services\\maintenanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SqliteEncryptionInterceptor.cs",
+              "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Services\\Interceptors\\SqliteEncryptionInterceptor.cs",
+              "RelativeDocumentMoniker": "Seek.API\\Services\\Interceptors\\SqliteEncryptionInterceptor.cs",
+              "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Services\\Interceptors\\SqliteEncryptionInterceptor.cs",
+              "RelativeToolTip": "Seek.API\\Services\\Interceptors\\SqliteEncryptionInterceptor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T06:27:11.665Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "StartUp.cs",
+              "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\StartUp.cs",
+              "RelativeDocumentMoniker": "Seek.API\\StartUp.cs",
+              "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\StartUp.cs",
+              "RelativeToolTip": "Seek.API\\StartUp.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAADgv3AAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T10:17:16.557Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Repo_Database_Security.cs",
               "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.EF\\Repositories\\Repo_Database_Security.cs",
               "RelativeDocumentMoniker": "Seek.EF\\Repositories\\Repo_Database_Security.cs",
               "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.EF\\Repositories\\Repo_Database_Security.cs",
               "RelativeToolTip": "Seek.EF\\Repositories\\Repo_Database_Security.cs",
-              "ViewState": "AgIAAHYAAAAAAAAAAADwv4UAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAD0AAACQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T06:48:28.564Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BackgroundJobService.cs",
-              "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Services\\Interceptors\\BackgroundJobService.cs",
-              "RelativeDocumentMoniker": "Seek.API\\Services\\Interceptors\\BackgroundJobService.cs",
-              "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Services\\Interceptors\\BackgroundJobService.cs",
-              "RelativeToolTip": "Seek.API\\Services\\Interceptors\\BackgroundJobService.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAowDgAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T06:45:02.421Z",
+              "WhenOpened": "2025-07-31T08:14:30.823Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "MaintenanceService.cs",
-              "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.EF\\Repositories\\Services\\MaintenanceService.cs",
-              "RelativeDocumentMoniker": "Seek.EF\\Repositories\\Services\\MaintenanceService.cs",
-              "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.EF\\Repositories\\Services\\MaintenanceService.cs",
-              "RelativeToolTip": "Seek.EF\\Repositories\\Services\\MaintenanceService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "DatabaseSecurityController.cs",
+              "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Controllers\\DatabaseSecurityController.cs",
+              "RelativeDocumentMoniker": "Seek.API\\Controllers\\DatabaseSecurityController.cs",
+              "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Controllers\\DatabaseSecurityController.cs",
+              "RelativeToolTip": "Seek.API\\Controllers\\DatabaseSecurityController.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAswCwAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T06:44:42.719Z",
+              "WhenOpened": "2025-07-31T07:53:15.892Z",
               "EditorCaption": ""
             }
           ]

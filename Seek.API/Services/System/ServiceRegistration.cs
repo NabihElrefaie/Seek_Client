@@ -11,7 +11,6 @@ namespace Seek.API.Services.System
             //Services
             services.AddHttpContextAccessor();
             services.AddHttpClient();
-            services.AddSingleton<MaintenanceService>();
             // Repositories and Interfaces Injection
             services.AddScoped<IRepo_Database_Security, Repo_Database_Security>();
 

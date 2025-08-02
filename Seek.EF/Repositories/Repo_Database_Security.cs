@@ -1,145 +1,198 @@
-﻿using Microsoft.Data.Sqlite;
-using Microsoft.Extensions.Logging;
-using Seek.Core.Helper_Classes;
-using Seek.Core.IRepositories;
+﻿using Seek.Core.IRepositories;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.Data.Sqlite;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
 
 namespace Seek.EF.Repositories
 {
     public class Repo_Database_Security : IRepo_Database_Security
     {
         private readonly ILogger<Repo_Database_Security> _logger;
-        private readonly MaintenanceService _maintenanceService;
+        private readonly IConfiguration _configuration; // Add IConfiguration dependency
 
-        // Constructor: Inject MaintenanceService
-        public Repo_Database_Security(ILogger<Repo_Database_Security> logger, MaintenanceService maintenanceService)
+        public Repo_Database_Security(ILogger<Repo_Database_Security> logger, IConfiguration configuration)
         {
             _logger = logger;
-            _maintenanceService = maintenanceService;
+            _configuration = configuration;
+
         }
 
-        public async Task<bool> DecryptDatabaseAsync(string encryptedDbPath, string plainDbPath, string encryptionKey)
+        private async Task<bool> IsDatabaseEncrypted(string dbPath)
         {
             try
             {
-                // Step 1: Enable maintenance mode before the operation
-                _maintenanceService.EnableMaintenance();
-                // Step 2: Ensure that no other process is using the database
-                await EnsureFileIsNotLocked(encryptedDbPath);
-
-                if (File.Exists(plainDbPath))
-                    File.Delete(plainDbPath);
-
-                using var connection = new SqliteConnection($"Data Source={encryptedDbPath}");
-                await connection.OpenAsync();
-
-                using (var command = connection.CreateCommand())
+                using (var connection = new SqliteConnection($"Data Source={dbPath}"))
                 {
-                    command.CommandText = $"PRAGMA key = '{encryptionKey}';";
-                    await command.ExecuteNonQueryAsync();
+                    await connection.OpenAsync();
 
-                    command.CommandText = $"ATTACH DATABASE '{plainDbPath}' AS plaintext KEY '';";
-                    await command.ExecuteNonQueryAsync();
-
-                    command.CommandText = "SELECT sqlcipher_export('plaintext');";
-                    await command.ExecuteNonQueryAsync();
-
-                    command.CommandText = "DETACH DATABASE plaintext;";
-                    await command.ExecuteNonQueryAsync();
+                    // First, try to read from sqlite_master without a key
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = "SELECT name FROM sqlite_master LIMIT 1;";
+                        try
+                        {
+                            var result = await command.ExecuteScalarAsync();
+                            // If we get a result without providing a key, it's unencrypted
+                            return false;
+                        }
+                        catch (SqliteException ex) when (ex.SqliteErrorCode == 26 /* SQLITE_NOTADB */)
+                        {
+                            // This error typically means the database is encrypted
+                            return true;
+                        }
+                        catch (SqliteException ex) when (ex.Message.Contains("file is encrypted", StringComparison.OrdinalIgnoreCase))
+                        {
+                            // Another common error message for encrypted databases
+                            return true;
+                        }
+                    }
                 }
-
-                await connection.CloseAsync();
-
-                // Replace encrypted file with plain
-                File.Delete(encryptedDbPath);
-                File.Move(plainDbPath, encryptedDbPath);
-
-                _logger.LogInformation("SQLite: Database decrypted successfully.");
-                return true;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "SQLite: Failed to decrypt database.");
-                return false;
-            }
-            finally
-            {
-                // Step 3: Disable maintenance mode after the operation
-                _maintenanceService.DisableMaintenance();
+                _logger.LogError(ex, "Error checking database encryption status");
+                // If we can't even open the file, assume it's encrypted
+                return true;
             }
         }
-
-        public async Task<bool> EncryptDatabaseAsync(string plainDbPath, string encryptedDbPath, string encryptionKey)
+        
+        public async Task<(bool Success, string Message)> DecryptDatabaseAsync(string encryptedDbPath, string plainDbPath, string encryptionKey)
         {
+            // Retrieve the correct encryption key from the configuration
+            var configuredEncryptionKey = _configuration["EncryptionKey"];
+
+            // Compare the provided key with the key in the configuration
+            if (encryptionKey != configuredEncryptionKey)
+            {
+                _logger.LogWarning("Incorrect encryption key provided.");
+                return (false, "Incorrect encryption key.");
+            }
+
+            // Check if the database is encrypted
+            if (!await IsDatabaseEncrypted(encryptedDbPath))
+            {
+                _logger.LogWarning("Database is not encrypted, skipping decryption.");
+                return (false, "Database is not encrypted, skipping decryption.");
+            }
+
             try
             {
-                // Step 1: Enable maintenance mode before the operation
-                _maintenanceService.EnableMaintenance();
-
-                // Step 2: Ensure that no other process is using the database
-                await EnsureFileIsNotLocked(plainDbPath);
-
-                if (File.Exists(encryptedDbPath))
-                    File.Delete(encryptedDbPath);
-
-                using var connection = new SqliteConnection($"Data Source={plainDbPath}");
-                await connection.OpenAsync();
-
-                using (var command = connection.CreateCommand())
+                using (var connection = new SqliteConnection($"Data Source={encryptedDbPath}"))
                 {
-                    command.CommandText = $"ATTACH DATABASE '{encryptedDbPath}' AS encrypted KEY '{encryptionKey}';";
-                    await command.ExecuteNonQueryAsync();
+                    await connection.OpenAsync();
 
-                    command.CommandText = "SELECT sqlcipher_export('encrypted');";
-                    await command.ExecuteNonQueryAsync();
+                    using (var command = connection.CreateCommand())
+                    {
+                        // Set the key to decrypt
+                        command.CommandText = $"PRAGMA key = '{encryptionKey}';";
+                        await command.ExecuteNonQueryAsync();
 
-                    command.CommandText = "DETACH DATABASE encrypted;";
-                    await command.ExecuteNonQueryAsync();
+                        // Verify decryption by executing a simple command
+                        command.CommandText = "SELECT name FROM sqlite_master LIMIT 1;";
+                        var result = await command.ExecuteScalarAsync();
+
+                        // If the query fails or returns no results, it indicates a decryption problem
+                        if (result == null || result == DBNull.Value)
+                        {
+                            _logger.LogWarning("Failed to decrypt the database with the provided key.");
+                            return (false, "Incorrect password or the database could not be decrypted.");
+                        }
+
+                        // Attach plaintext database
+                        command.CommandText = $"ATTACH DATABASE '{plainDbPath}' AS plaintext KEY '';";
+                        await command.ExecuteNonQueryAsync();
+
+                        // Export decrypted data
+                        command.CommandText = "SELECT sqlcipher_export('plaintext');";
+                        await command.ExecuteNonQueryAsync();
+
+                        // Detach plaintext database
+                        command.CommandText = "DETACH DATABASE plaintext;";
+                        await command.ExecuteNonQueryAsync();
+
+                        await connection.CloseAsync();
+                    }
                 }
 
-                await connection.CloseAsync();
+                // Backup decrypted database into the tempdata folder
+                var tempDataDir = Path.Combine(Path.GetDirectoryName(encryptedDbPath), "Decrypt");
+                Directory.CreateDirectory(tempDataDir);  // Ensure the tempdata folder exists
+                var timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                var backupPath = Path.Combine(tempDataDir, $"decrypted_{timestamp}.db");
 
-                // Replace plain file with encrypted one
-                File.Delete(plainDbPath);
-                File.Move(encryptedDbPath, plainDbPath);
+                // Move the decrypted database file to the tempdata folder
+                File.Move(plainDbPath, backupPath);
 
-                _logger.LogInformation("SQLite: Database encrypted successfully.");
-                return true;
+                _logger.LogInformation($"Database decrypted successfully. Backup at: {backupPath}");
+                return (true, "Database decrypted successfully.");
+            }
+            catch (SqliteException sqlEx)
+            {
+                // Handle database-specific errors
+                _logger.LogError(sqlEx, "SQL error occurred while decrypting database.");
+                return (false, "An error occurred while decrypting the database. Please check the password and try again.");
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "SQLite: Failed to encrypt database.");
-                return false;
-            }
-            finally
-            {
-                // Step 3: Disable maintenance mode after the operation
-                _maintenanceService.DisableMaintenance();
+                // General exception handling
+                _logger.LogError(ex, "Failed to decrypt database");
+                return (false, "An unexpected error occurred while decrypting the database.");
             }
         }
-
-        /// <summary>
-        /// Waits for file to be unlocked before proceeding.
-        /// </summary>
-        private async Task EnsureFileIsNotLocked(string filePath, int retries = 10, int delayMs = 300)
+        public async Task<(bool Success, string Message)> EncryptDatabaseAsync(string plainDbPath, string encryptedDbPath, string encryptionKey)
         {
-            for (int i = 0; i < retries; i++)
+            // Check if database is already encrypted
+            bool isEncrypted = await IsDatabaseEncrypted(plainDbPath);
+            if (isEncrypted)
             {
-                try
-                {
-                    using (File.Open(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.None)) { }
-                    return;
-                }
-                catch (IOException)
-                {
-                    _logger.LogWarning($"SQLite: File '{filePath}' is locked. Retrying ({i + 1}/{retries})...");
-                    await Task.Delay(delayMs);
-                }
+                _logger.LogWarning("Database is already encrypted.");
+                return (false, "Database is already encrypted");
             }
 
-            throw new IOException($"SQLite: Timeout waiting for file '{filePath}' to be unlocked.");
+            try
+            {
+                using (var connection = new SqliteConnection($"Data Source={plainDbPath}"))
+                {
+                    await connection.OpenAsync();
+
+                    using (var command = connection.CreateCommand())
+                    {
+                        // Set the key to verify if unencrypted
+                        command.CommandText = "PRAGMA cipher_version;";
+                        await command.ExecuteScalarAsync();
+
+                        // Proceed with encryption
+                        command.CommandText = $"ATTACH DATABASE '{encryptedDbPath}' AS encrypted KEY '{encryptionKey}';";
+                        await command.ExecuteNonQueryAsync();
+
+                        command.CommandText = "SELECT sqlcipher_export('encrypted');";
+                        await command.ExecuteNonQueryAsync();
+
+                        command.CommandText = "DETACH DATABASE encrypted;";
+                        await command.ExecuteNonQueryAsync();
+
+                        await connection.CloseAsync();
+                    }
+                }
+
+                // Backup encrypted database
+                var tempDataDir = Path.Combine(Path.GetDirectoryName(plainDbPath), "../Encrypted");
+                Directory.CreateDirectory(tempDataDir);
+                var timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                var backupPath = Path.Combine(tempDataDir, $"encrypted_{timestamp}.db");
+                File.Move(encryptedDbPath, backupPath);
+
+                _logger.LogInformation($"Database encrypted successfully. Backup at: {backupPath}");
+                return (true, "Database encrypted successfully");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to encrypt database");
+                return (false, "Failed to encrypt database");
+            }
         }
     }
 }

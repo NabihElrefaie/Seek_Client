@@ -26,13 +26,4 @@
     <ProjectReference Include="..\Seek.Core\Seek.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Zatca.EInvoice.SDK">
-      <HintPath>..\..\..\..\Downloads\VAT V.2 Docs\SDK\Development\zatca-einvoicing-sdk-DotNet-238-R3.4.3\Lib\Dot-Net8\DLL\Zatca.EInvoice.SDK\net8.0\Zatca.EInvoice.SDK.dll</HintPath>
-    </Reference>
-    <Reference Include="Zatca.EInvoice.SDK.Contracts">
-      <HintPath>..\..\..\..\Downloads\VAT V.2 Docs\SDK\Development\zatca-einvoicing-sdk-DotNet-238-R3.4.3\Lib\Dot-Net8\DLL\Zatca.EInvoice.SDK\net8.0\Zatca.EInvoice.SDK.Contracts.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
