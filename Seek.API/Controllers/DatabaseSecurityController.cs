@@ -28,24 +28,21 @@ namespace Seek.API.Controllers
         [HttpPost("Decrypt")]
         public async Task<IActionResult> Decrypt([FromBody] TransformRequest request)
         {
-            // Check if encryption key is needed (only if is_Encrypt is false)
             if (string.IsNullOrEmpty(request.Encryption_Key))
             {
                 return BadRequest(new { message = "Encryption key is required when decrypting." });
             }
+
             var dbPath = Path.Combine(_env.ContentRootPath, "Database", "seek.db");
             var tempPath = Path.Combine(_env.ContentRootPath, "Database", "temp_transform.db");
-
-            // Fetch the encryption key from the configuration (for encryption) or from the request (for decryption)
             var encryptionKey = request.Encryption_Key;
-            if (string.IsNullOrEmpty(encryptionKey))
-            {
-                return StatusCode(500, new { message = "Encryption key is not set." });
-            }
-            var (success, Message) = await _securityRepo.DecryptDatabaseAsync(dbPath, tempPath, encryptionKey);
-            return success ? Ok(new { message =Message }) : BadRequest(new { message = Message });
 
+            Log.Information("SQLite : Decrypting database");
+
+            var (success, Message) = await _securityRepo.DecryptDatabaseAsync(dbPath, tempPath, encryptionKey);
+            return success ? Ok(new { message = Message }) : BadRequest(new { message = Message });
         }
+
         [HttpPost("Encrypt")]
         public async Task<IActionResult> Encrypt([FromQuery] string databasePath)
         {
@@ -55,7 +52,7 @@ namespace Seek.API.Controllers
             var encryptionKey = _configuration["EncryptionKey"];
 
             // Log for debugging
-            Log.Information($"Encrypting database at: {databasePath}");
+            Log.Information($"SQLite : Encrypting database");
 
             if (string.IsNullOrEmpty(encryptionKey))
             {
@@ -67,12 +64,8 @@ namespace Seek.API.Controllers
                 return BadRequest(new { message = "The database file must have a .db extension." });
             }
 
-            var (success, message) = await _securityRepo.EncryptDatabaseAsync(databasePath, tempPath, encryptionKey);
-
-            // Log success or failure
-            Log.Information(success ? "Encryption successful." : $"Encryption failed: {message}");
-
-            return success ? Ok(new { message }) : BadRequest(new { message });
+            var (success, Message) = await _securityRepo.EncryptDatabaseAsync(databasePath, tempPath, encryptionKey);
+            return success ? Ok(new { message = Message }) : BadRequest(new { message = Message });
         }
 
     }

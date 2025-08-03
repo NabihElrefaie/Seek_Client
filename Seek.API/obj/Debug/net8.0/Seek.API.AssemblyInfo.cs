@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Seek.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14cfd0f196bce8d67c69bae50c1cf1d373e8d678")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+acb3a75d251ef9264816bad179716c6c5c26ae67")]
 [assembly: System.Reflection.AssemblyProductAttribute("Seek.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Seek.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

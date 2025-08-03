@@ -11,73 +11,23 @@ namespace Seek.EF.Repositories
     public class Repo_Database_Security : IRepo_Database_Security
     {
         private readonly ILogger<Repo_Database_Security> _logger;
-        private readonly IConfiguration _configuration; // Add IConfiguration dependency
-
+        private readonly IConfiguration _configuration;
         public Repo_Database_Security(ILogger<Repo_Database_Security> logger, IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
 
         }
-
-        private async Task<bool> IsDatabaseEncrypted(string dbPath)
-        {
-            try
-            {
-                using (var connection = new SqliteConnection($"Data Source={dbPath}"))
-                {
-                    await connection.OpenAsync();
-
-                    // First, try to read from sqlite_master without a key
-                    using (var command = connection.CreateCommand())
-                    {
-                        command.CommandText = "SELECT name FROM sqlite_master LIMIT 1;";
-                        try
-                        {
-                            var result = await command.ExecuteScalarAsync();
-                            // If we get a result without providing a key, it's unencrypted
-                            return false;
-                        }
-                        catch (SqliteException ex) when (ex.SqliteErrorCode == 26 /* SQLITE_NOTADB */)
-                        {
-                            // This error typically means the database is encrypted
-                            return true;
-                        }
-                        catch (SqliteException ex) when (ex.Message.Contains("file is encrypted", StringComparison.OrdinalIgnoreCase))
-                        {
-                            // Another common error message for encrypted databases
-                            return true;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error checking database encryption status");
-                // If we can't even open the file, assume it's encrypted
-                return true;
-            }
-        }
-        
         public async Task<(bool Success, string Message)> DecryptDatabaseAsync(string encryptedDbPath, string plainDbPath, string encryptionKey)
         {
-            // Retrieve the correct encryption key from the configuration
+            // Retrieve encryption key from configuration
             var configuredEncryptionKey = _configuration["EncryptionKey"];
 
-            // Compare the provided key with the key in the configuration
             if (encryptionKey != configuredEncryptionKey)
             {
-                _logger.LogWarning("Incorrect encryption key provided.");
-                return (false, "Incorrect encryption key.");
+                _logger.LogWarning("SQLite : Incorrect encryption key provided.");
+                return (false, "SQLite : Incorrect encryption key.");
             }
-
-            // Check if the database is encrypted
-            if (!await IsDatabaseEncrypted(encryptedDbPath))
-            {
-                _logger.LogWarning("Database is not encrypted, skipping decryption.");
-                return (false, "Database is not encrypted, skipping decryption.");
-            }
-
             try
             {
                 using (var connection = new SqliteConnection($"Data Source={encryptedDbPath}"))
@@ -86,19 +36,18 @@ namespace Seek.EF.Repositories
 
                     using (var command = connection.CreateCommand())
                     {
-                        // Set the key to decrypt
+                        // Set the key for decryption
                         command.CommandText = $"PRAGMA key = '{encryptionKey}';";
                         await command.ExecuteNonQueryAsync();
 
-                        // Verify decryption by executing a simple command
+                        // Verify decryption by executing a simple query
                         command.CommandText = "SELECT name FROM sqlite_master LIMIT 1;";
                         var result = await command.ExecuteScalarAsync();
 
-                        // If the query fails or returns no results, it indicates a decryption problem
                         if (result == null || result == DBNull.Value)
                         {
-                            _logger.LogWarning("Failed to decrypt the database with the provided key.");
-                            return (false, "Incorrect password or the database could not be decrypted.");
+                            _logger.LogWarning("SQLite : Failed to decrypt the database with the provided key.");
+                            return (false, "SQLite : Incorrect password or the database could not be decrypted.");
                         }
 
                         // Attach plaintext database
@@ -116,42 +65,29 @@ namespace Seek.EF.Repositories
                         await connection.CloseAsync();
                     }
                 }
-
-                // Backup decrypted database into the tempdata folder
+                // Backup the decrypted database
                 var tempDataDir = Path.Combine(Path.GetDirectoryName(encryptedDbPath), "Decrypt");
-                Directory.CreateDirectory(tempDataDir);  // Ensure the tempdata folder exists
+                Directory.CreateDirectory(tempDataDir);
                 var timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
                 var backupPath = Path.Combine(tempDataDir, $"decrypted_{timestamp}.db");
-
-                // Move the decrypted database file to the tempdata folder
                 File.Move(plainDbPath, backupPath);
 
-                _logger.LogInformation($"Database decrypted successfully. Backup at: {backupPath}");
-                return (true, "Database decrypted successfully.");
+                _logger.LogInformation("SQLite : Database decrypted successfully.");
+                return (true, "SQLite : Database decrypted successfully.");
             }
             catch (SqliteException sqlEx)
             {
-                // Handle database-specific errors
-                _logger.LogError(sqlEx, "SQL error occurred while decrypting database.");
-                return (false, "An error occurred while decrypting the database. Please check the password and try again.");
+                _logger.LogError(sqlEx, "SQLite : SQL error occurred during decryption");
+                return (false, "SQLite : An error occurred while decrypting the database. Please check the password and try again.");
             }
             catch (Exception ex)
             {
-                // General exception handling
-                _logger.LogError(ex, "Failed to decrypt database");
-                return (false, "An unexpected error occurred while decrypting the database.");
+                _logger.LogError(ex, "SQLite : Unexpected error during decryption");
+                return (false, "SQLite : An unexpected error occurred during decryption.");
             }
         }
         public async Task<(bool Success, string Message)> EncryptDatabaseAsync(string plainDbPath, string encryptedDbPath, string encryptionKey)
         {
-            // Check if database is already encrypted
-            bool isEncrypted = await IsDatabaseEncrypted(plainDbPath);
-            if (isEncrypted)
-            {
-                _logger.LogWarning("Database is already encrypted.");
-                return (false, "Database is already encrypted");
-            }
-
             try
             {
                 using (var connection = new SqliteConnection($"Data Source={plainDbPath}"))
@@ -185,13 +121,13 @@ namespace Seek.EF.Repositories
                 var backupPath = Path.Combine(tempDataDir, $"encrypted_{timestamp}.db");
                 File.Move(encryptedDbPath, backupPath);
 
-                _logger.LogInformation($"Database encrypted successfully. Backup at: {backupPath}");
-                return (true, "Database encrypted successfully");
+                _logger.LogInformation($"SQLite : Database encrypted successfully");
+                return (true, "SQLite : Database encrypted successfully");
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Failed to encrypt database");
-                return (false, "Failed to encrypt database");
+                _logger.LogError(ex, "SQLite : Failed to encrypt database");
+                return (false, "SQLite : Failed to encrypt database");
             }
         }
     }

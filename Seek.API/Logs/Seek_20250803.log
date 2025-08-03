@@ -1,0 +1,33 @@
+2025-08-03 14:06:01.494 +03:00 [INF] System : Starting web host
+2025-08-03 14:06:02.839 +03:00 [INF] SQLite : Database is properly encrypted
+2025-08-03 14:06:03.188 +03:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-08-03 14:06:03.200 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2025-08-03 14:06:03.571 +03:00 [INF] Executed DbCommand (367ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-08-03 11:06:03.2042244+00:00');
+SELECT changes();
+2025-08-03 14:06:03.638 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+2025-08-03 14:06:03.656 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2025-08-03 14:06:03.659 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-08-03 14:06:03.666 +03:00 [INF] No migrations were applied. The database is already up to date.
+2025-08-03 14:06:03.672 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+DELETE FROM "__EFMigrationsLock";
+2025-08-03 14:06:03.676 +03:00 [INF] System : Creating Default Data By System
+2025-08-03 14:06:03.676 +03:00 [INF] System : Ending Creating Default Data
+2025-08-03 14:06:03.677 +03:00 [INF] SQLite : Database initialized successfully
+2025-08-03 14:06:03.679 +03:00 [INF] System : Starting in development environment
+2025-08-03 14:06:03.885 +03:00 [INF] Now listening on: https://localhost:7115
+2025-08-03 14:06:03.887 +03:00 [INF] Now listening on: http://localhost:5298
+2025-08-03 14:06:03.950 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-03 14:06:03.952 +03:00 [INF] Hosting environment: Development
+2025-08-03 14:06:03.960 +03:00 [INF] Content root path: C:\Users\nabih\github\Seek_Client\Seek.API
+2025-08-03 14:21:02.743 +03:00 [INF] SQLite : Decrypting database
+2025-08-03 14:21:02.746 +03:00 [WRN] SQLite : Incorrect encryption key provided.
