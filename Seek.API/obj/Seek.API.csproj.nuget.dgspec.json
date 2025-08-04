@@ -111,6 +111,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[9.0.3, )"
+            },
+            "System.Management": {
+              "target": "Package",
+              "version": "[9.0.7, )"
             }
           },
           "imports": [

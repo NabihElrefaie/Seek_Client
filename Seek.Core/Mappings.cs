@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Seek.Core.Dtos;
-using Seek.Core.Models;
+using Seek.Core.Models.Auth;
 
 namespace Seek.Core
 {

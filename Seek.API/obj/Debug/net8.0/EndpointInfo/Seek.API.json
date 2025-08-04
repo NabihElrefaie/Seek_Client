@@ -15,6 +15,27 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Database_Existence_Checker/check": {
+      "get": {
+        "tags": [
+          "Database_Existence_Checker"
+        ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/DatabaseSecurity/Decrypt": {
       "post": {
         "tags": [

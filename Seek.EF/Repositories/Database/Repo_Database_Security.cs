@@ -1,12 +1,12 @@
-﻿using Seek.Core.IRepositories;
-using System;
+﻿using System;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
+using Seek.Core.IRepositories.Database;
 
-namespace Seek.EF.Repositories
+namespace Seek.EF.Repositories.Database
 {
     public class Repo_Database_Security : IRepo_Database_Security
     {

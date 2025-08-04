@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Seek.Core.Models
+namespace Seek.Core.Models.Auth
 {
     public class auth_model
     {
@@ -20,6 +20,7 @@ namespace Seek.Core.Models
         public string? HashedToken { get; set; }
         public string? Hashed_Refresh_Token { get; set; }
         public DateTime? ExpiresIn { get; set; }
-
+        [NotMapped]
+        public int SingletonId { get; set; }
     }
 }

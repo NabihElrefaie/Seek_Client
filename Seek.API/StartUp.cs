@@ -38,6 +38,10 @@ namespace Seek.API
             services.AddAutoMapper(typeof(Mappings).Assembly);
             services.AddScoped<DefaultDataService>();
 
+            // Configure Email Service
+            services.Configure<Security.EmailSettings>(_configuration.GetSection("EmailSettings"));
+            services.AddSingleton<Security.EmailService>();
+
             // Add API versioning
             services.AddApiVersioning(options =>
             {
@@ -92,7 +96,7 @@ namespace Seek.API
                 endpoints.MapControllers();
             });
         }
-        
+
         #region Database Configuration
         private void InitializeSqlCipher()
         {
@@ -101,28 +105,67 @@ namespace Seek.API
         }
         private void ConfigureDatabaseServices(IServiceCollection services)
         {
-            var encryptionKey = GetEncryptionKey();
+            // Register SecureKeyManager as a singleton
+            services.AddSingleton<Security.SecureKeyManager>(provider =>
+                new Security.SecureKeyManager(
+                    Directory.GetCurrentDirectory(),
+                    provider.GetRequiredService<ILogger<Security.SecureKeyManager>>(),
+                    provider.GetService<Security.EmailService>()
+                )
+            );
+
             var connectionString = GetConnectionString();
 
             // Ensure database directory exists
             EnsureDatabaseDirectory();
 
-            // Register encryption interceptor
+            // Register encryption interceptor using the factory with secure key management
             services.AddSingleton<SqliteEncryptionInterceptor>(provider =>
-                new SqliteEncryptionInterceptor(encryptionKey,
-                    provider.GetRequiredService<ILogger<SqliteEncryptionInterceptor>>()));
+                SqliteEncryptionInterceptorFactory.Create(
+                    provider.GetRequiredService<Security.SecureKeyManager>(),
+                    _configuration["EncryptionKey"],  // Fallback key from configuration
+                    provider.GetRequiredService<ILogger<SqliteEncryptionInterceptor>>(),
+                    _configuration["UserPassword"]    // Optional user password
+                )
+            );
 
             // Register DbContext with encryption
             services.AddDbContext<ApplicationDbContext>(options =>
                 ConfigureDbContextOptions(options, connectionString, services));
         }
+
         private string GetEncryptionKey()
         {
             var encryptionKey = _configuration["EncryptionKey"];
             if (string.IsNullOrWhiteSpace(encryptionKey))
             {
-                Log.Error("SQLite : Encryption key is not configured");
-                throw new InvalidOperationException("SQLite encryption key is not configured. Set the 'EncryptionKey' in configuration.");
+                // Try to get the key from the secure key manager if DI is available
+                try
+                {
+                    // Create a temporary service provider if needed
+                    using (var scope = new ServiceCollection()
+                        .AddLogging()
+                        .Configure<Security.EmailSettings>(_configuration.GetSection("EmailSettings"))
+                        .AddSingleton<Security.EmailService>()
+                        .AddSingleton<Security.SecureKeyManager>(provider =>
+                            new Security.SecureKeyManager(
+                                Directory.GetCurrentDirectory(),
+                                provider.GetRequiredService<ILogger<Security.SecureKeyManager>>(),
+                                provider.GetService<Security.EmailService>()
+                            ))
+                        .BuildServiceProvider())
+                    {
+                        var keyManager = scope.GetRequiredService<Security.SecureKeyManager>();
+                        var userPassword = _configuration["UserPassword"];
+                        encryptionKey = keyManager.GetEncryptionKey(userPassword);
+                        Log.Information("SQLite: Using securely generated encryption key");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex, "SQLite encryption key is not configured and secure key manager failed");
+                    throw new InvalidOperationException("SQLite encryption key is not configured. Set the 'EncryptionKey' in configuration.");
+                }
             }
             return encryptionKey;
         }
@@ -131,7 +174,7 @@ namespace Seek.API
             var connectionString = _configuration.GetConnectionString("DefaultConnection");
             if (string.IsNullOrWhiteSpace(connectionString))
             {
-                Log.Error("SQLite :  Connection string is not configured");
+                Log.Error("SQLite connection string is not configured");
                 throw new InvalidOperationException("SQLite connection string is not configured. Set the 'DefaultConnection' in configuration.");
             }
             return connectionString;
@@ -331,6 +374,7 @@ namespace Seek.API
                 }
             }
         }
+
         private bool MigrateDataToEncryptedDatabase(string sourceDbPath, string encryptedDbPath, string encryptionKey)
         {
             try
@@ -401,6 +445,7 @@ namespace Seek.API
                 return false;
             }
         }
+
         private void CopyTableData(SqliteConnection sourceConn, SqliteConnection destConn, string tableName)
         {
             try
@@ -466,6 +511,7 @@ namespace Seek.API
                 throw;
             }
         }
+
         private bool ReplaceWithEncryptedDatabase(string encryptedDbPath, string originalDbPath)
         {
             const int maxRetries = 3;
@@ -503,6 +549,7 @@ namespace Seek.API
 
             return false;
         }
+
         private bool IsDatabaseEncryptedAndValid(string dbPath, string encryptionKey)
         {
             try
@@ -527,11 +574,12 @@ namespace Seek.API
         }
         #endregion
 
-        // Active DbContexts
+        // Example: a static list of active DbContexts
         public static class DbContextManager
         {
             private static readonly List<WeakReference<ApplicationDbContext>> _contexts = new();
             private static readonly object _lock = new();
+
             public static void Register(ApplicationDbContext context)
             {
                 lock (_lock)
@@ -548,6 +596,7 @@ namespace Seek.API
                     };
                 }
             }
+
             public static void DisposeAll()
             {
                 lock (_lock)

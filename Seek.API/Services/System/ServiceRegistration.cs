@@ -1,6 +1,6 @@
 ﻿using Seek.Core.Helper_Classes;
-using Seek.Core.IRepositories;
-using Seek.EF.Repositories;
+using Seek.Core.IRepositories.Database;
+using Seek.EF.Repositories.Database;
 
 namespace Seek.API.Services.System
 {
@@ -13,6 +13,7 @@ namespace Seek.API.Services.System
             services.AddHttpClient();
             // Repositories and Interfaces Injection
             services.AddScoped<IRepo_Database_Security, Repo_Database_Security>();
+            services.AddScoped<IRepo_Database_Existence_Checker, Repo_Database_Existence_Checker>();
 
         }
     }

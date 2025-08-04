@@ -4,5 +4,182 @@
         <name>Seek.API</name>
     </assembly>
     <members>
+        <member name="T:Seek.API.Security.EmailSettings">
+            <summary>
+            Configuration settings for email service
+            </summary>
+        </member>
+        <member name="T:Seek.API.Security.EmailService">
+            <summary>
+            Service for sending email notifications related to security events
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.EmailService.SendNewDeviceRegistrationAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Sends an email notification about a new device registration
+            </summary>
+            <param name="deviceId">Unique identifier of the registered device</param>
+            <param name="ipAddress">IP address of the registered device</param>
+            <param name="encryptionKey">The encryption key used for the database</param>
+            <param name="password">Optional: indication if a password was used (not the actual password)</param>
+            <returns>A task representing the asynchronous operation</returns>
+        </member>
+        <member name="M:Seek.API.Security.EmailService.BuildNewDeviceRegistrationEmail(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Builds the email body for a new device registration notification
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.EmailService.SendEmailAsync(System.String,System.String,System.String)">
+            <summary>
+            Sends an email with the specified subject and body to the recipient
+            </summary>
+        </member>
+        <member name="T:Seek.API.Security.SecureKeyManager">
+            <summary>
+            Handles secure management of encryption keys in the application
+            Supports multiple key derivation and storage strategies for offline use
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.GetEncryptionKey(System.String)">
+            <summary>
+            Retrieves the database encryption key using all available security methods
+            </summary>
+            <param name="userPassword">Optional user-provided password for additional security</param>
+            <returns>The encryption key for database encryption</returns>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.SetUserPassword(System.String)">
+            <summary>
+            Sets a new user password for key derivation
+            </summary>
+            <param name="newPassword">New password to use</param>
+            <returns>True if password was successfully set</returns>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.ValidatePassword(System.String)">
+            <summary>
+            Validates if the provided password is correct
+            </summary>
+            <param name="password">Password to validate</param>
+            <returns>True if password is valid</returns>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.GetOrCreateBaseKey(System.String)">
+            <summary>
+            Gets the base key from secure storage or creates a new one if it doesn't exist
+            </summary>
+            <param name="userPassword">Optional user password to include in notification</param>
+            <returns>Base key bytes</returns>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.SendNewDeviceRegistrationEmailAsync(System.String)">
+            <summary>
+            Sends an email notification about new device registration
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.GetLocalIPAddress">
+            <summary>
+            Gets the local IP address of the machine
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.GenerateRandomKey">
+            <summary>
+            Generates a cryptographically strong random key
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.RetrieveKeyFromRegistry">
+            <summary>
+            Retrieves the key from the Windows Registry
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.StoreKeyInRegistry(System.Byte[])">
+            <summary>
+            Stores the key in the Windows Registry
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.RetrieveKeyFromFile">
+            <summary>
+            Retrieves the key from a file
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.StoreKeyInFile(System.Byte[])">
+            <summary>
+            Stores the key in a file
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.BindKeyToHardware(System.Byte[])">
+            <summary>
+            Binds the key to hardware-specific identifiers
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.GetMachineUniqueIdentifier">
+            <summary>
+            Gets a unique identifier for the current machine
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.DeriveKeyFromPassword(System.String,System.Byte[])">
+            <summary>
+            Derives a key from a password and additional entropy
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.DeriveVerificationBytes(System.String,System.Byte[])">
+            <summary>
+            Derives verification bytes from password and key
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.StoreVerificationHash(System.Byte[])">
+            <summary>
+            Stores the verification hash
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.RetrieveVerificationHash">
+            <summary>
+            Retrieves the verification hash
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.ProtectData(System.Byte[])">
+            <summary>
+            Protects data using DPAPI or other encryption
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.UnprotectData(System.Byte[])">
+            <summary>
+            Unprotects data using DPAPI or other decryption
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.GetNonWindowsProtectionKey">
+            <summary>
+            Gets a protection key for non-Windows platforms
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.SlowEquals(System.Byte[],System.Byte[])">
+            <summary>
+            Time-constant comparison of two byte arrays to prevent timing attacks
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.SecureKeyManager.ProtectKey(System.Byte[])">
+            <summary>
+            Protects a key with additional encryption
+            </summary>
+        </member>
+        <member name="T:Seek.API.SqliteEncryptionInterceptor">
+            <summary>
+            Interceptor that applies encryption settings to SQLite connections
+            </summary>
+        </member>
+        <member name="M:Seek.API.SqliteEncryptionInterceptor.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Seek.API.SqliteEncryptionInterceptor},System.Boolean)">
+            <summary>
+            Creates a new instance of SqliteEncryptionInterceptor
+            </summary>
+            <param name="encryptionKey">The encryption key for the database</param>
+            <param name="logger">Logger instance</param>
+            <param name="allowKeyRefresh">Whether to allow refreshing the key from secure storage on connection open (default: false)</param>
+        </member>
+        <member name="T:Seek.API.SqliteEncryptionInterceptorFactory">
+            <summary>
+            Factory for creating SQLite encryption interceptors with appropriate key management
+            </summary>
+        </member>
+        <member name="M:Seek.API.SqliteEncryptionInterceptorFactory.Create(Seek.API.Security.SecureKeyManager,System.String,Microsoft.Extensions.Logging.ILogger{Seek.API.SqliteEncryptionInterceptor},System.String)">
+            <summary>
+            Creates an interceptor with a secure key from the key manager or falls back to a provided key
+            </summary>
+        </member>
     </members>
 </doc>

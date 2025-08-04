@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Seek.Core.IRepositories
+namespace Seek.Core.IRepositories.Database
 {
     public interface IRepo_Database_Security
     {

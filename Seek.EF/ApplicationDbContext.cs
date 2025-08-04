@@ -1,13 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Seek.Core.Models;
-using Seek.EF.Configurations;
-using System;
-using System.Collections.Generic;
+using Seek.Core.Models.Agent;
+using Seek.Core.Models.Auth;
+using Seek.EF.Configurations.Agent;
+using Seek.EF.Configurations.Auth;
+
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Seek.EF
 {
@@ -26,6 +25,9 @@ namespace Seek.EF
             base.OnModelCreating(modelBuilder);
             // Apply configurations
             new auth_configs().Configure(modelBuilder.Entity<auth_model>());
+            new company_configs().Configure(modelBuilder.Entity<company_model>());
+            new branch_configs().Configure(modelBuilder.Entity<branch_model>());
+            new cashier_configs().Configure(modelBuilder.Entity<cashier_model>());
 
         }
         // Ensure connection is closed when context is disposed

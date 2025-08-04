@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Seek.Core.Helper_Classes;
-using Seek.Core.IRepositories;
+using Seek.Core.IRepositories.Database;
 using Serilog;
 using static com.sun.net.httpserver.Authenticator;
 

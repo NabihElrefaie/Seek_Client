@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "Seek.API.Controllers.Database_Existence_CheckerController",
+    "Method": "CheckDatabase",
+    "RelativePath": "api/Database_Existence_Checker/check",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "api-version",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Seek.API.Controllers.DatabaseSecurityController",
     "Method": "Decrypt",
     "RelativePath": "api/DatabaseSecurity/Decrypt",
