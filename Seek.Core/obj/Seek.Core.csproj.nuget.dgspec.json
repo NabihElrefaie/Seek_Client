@@ -62,6 +62,14 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.7, )"
+            },
+            "System.Management": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "System.Security.Cryptography.ProtectedData": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             }
           },
           "imports": [

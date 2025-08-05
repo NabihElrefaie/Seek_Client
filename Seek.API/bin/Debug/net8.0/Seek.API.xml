@@ -4,158 +4,219 @@
         <name>Seek.API</name>
     </assembly>
     <members>
-        <member name="T:Seek.API.Security.EmailSettings">
+        <member name="M:Seek.API.Controllers.System.SecureSettingsController.UpdateEmailSettings(Seek.Core.Security.EmailSettings)">
             <summary>
-            Configuration settings for email service
+            Updates secure email settings
             </summary>
         </member>
-        <member name="T:Seek.API.Security.EmailService">
+        <member name="M:Seek.API.Controllers.System.SecureSettingsController.GetEmailSettings">
             <summary>
-            Service for sending email notifications related to security events
+            Gets secure email settings (without password)
             </summary>
         </member>
-        <member name="M:Seek.API.Security.EmailService.SendNewDeviceRegistrationAsync(System.String,System.String,System.String,System.String)">
+        <member name="M:Seek.API.Controllers.System.VerificationController.GetVerificationStatus">
             <summary>
-            Sends an email notification about a new device registration
+            Checks if the application is verified
             </summary>
-            <param name="deviceId">Unique identifier of the registered device</param>
-            <param name="ipAddress">IP address of the registered device</param>
-            <param name="encryptionKey">The encryption key used for the database</param>
-            <param name="password">Optional: indication if a password was used (not the actual password)</param>
+        </member>
+        <member name="M:Seek.API.Controllers.System.VerificationController.SendVerificationCode">
+            <summary>
+            Sends a verification code to the admin email
+            </summary>
+        </member>
+        <member name="M:Seek.API.Controllers.System.VerificationController.VerifyApplication(Seek.API.Controllers.System.VerificationRequest)">
+            <summary>
+            Verifies the application using the provided code
+            </summary>
+        </member>
+        <member name="M:Seek.API.Controllers.System.VerificationController.ResetVerification">
+            <summary>
+            Resets the verification status (requires authentication in production)
+            </summary>
+        </member>
+        <member name="T:Seek.API.Security.New.ApplicationDbContextExtensions">
+            <summary>
+            Extension methods for the ApplicationDbContext to add security features
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.New.ApplicationDbContextExtensions.ConfigureEncryption(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder,System.String,System.IServiceProvider)">
+            <summary>
+            Creates a configured DbContextOptionsBuilder with proper encryption settings
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.New.ApplicationDbContextExtensions.IsDatabaseAccessible(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Checks if the application is verified and the database is accessible
+            </summary>
+        </member>
+        <member name="T:Seek.API.Security.New.DatabaseEncryptionExtensions">
+            <summary>
+            Extensions for integrating database encryption with the application startup
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.New.DatabaseEncryptionExtensions.AddDatabaseEncryptionServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers database encryption services
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.New.DatabaseEncryptionExtensions.UseVerificationCheck(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Configures application startup to check for verification before allowing database access
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.New.DatabaseEncryptionExtensions.VerifyDatabaseEncryptionAsync(Seek.EF.ApplicationDbContext,Seek.Core.IRepositories.Database.IRepo_Database_Security,System.String)">
+            <summary>
+            Helper method to verify encrypted database connection
+            </summary>
+        </member>
+        <member name="T:Seek.API.Security.New.EmailServiceExtensions">
+            <summary>
+            Extension methods for the EmailService class
+            </summary>
+        </member>
+        <member name="M:Seek.API.Security.New.EmailServiceExtensions.SendVerificationCodeAsync(Seek.Core.Security.EmailService,System.String,System.String)">
+            <summary>
+            Sends a verification code email to the specified recipient
+            </summary>
+            <param name="emailService">The email service instance</param>
+            <param name="recipient">Email recipient</param>
+            <param name="verificationCode">The verification code to send</param>
             <returns>A task representing the asynchronous operation</returns>
         </member>
-        <member name="M:Seek.API.Security.EmailService.BuildNewDeviceRegistrationEmail(System.String,System.String,System.String,System.Boolean)">
+        <member name="M:Seek.API.Security.New.EmailServiceExtensions.BuildVerificationCodeEmail(System.String)">
             <summary>
-            Builds the email body for a new device registration notification
+            Builds the email body for a verification code notification
             </summary>
         </member>
-        <member name="M:Seek.API.Security.EmailService.SendEmailAsync(System.String,System.String,System.String)">
+        <member name="T:Seek.API.Security.New.SecureSettingsManager">
             <summary>
-            Sends an email with the specified subject and body to the recipient
+            Manages secure storage and retrieval of sensitive application settings
             </summary>
         </member>
-        <member name="T:Seek.API.Security.SecureKeyManager">
+        <member name="M:Seek.API.Security.New.SecureSettingsManager.GetSecureEmailSettings">
             <summary>
-            Handles secure management of encryption keys in the application
-            Supports multiple key derivation and storage strategies for offline use
+            Gets secure email settings, either from encrypted storage or falls back to configuration
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.GetEncryptionKey(System.String)">
+        <member name="M:Seek.API.Security.New.SecureSettingsManager.SaveSecureEmailSettings(Seek.Core.Security.EmailSettings)">
             <summary>
-            Retrieves the database encryption key using all available security methods
-            </summary>
-            <param name="userPassword">Optional user-provided password for additional security</param>
-            <returns>The encryption key for database encryption</returns>
-        </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.SetUserPassword(System.String)">
-            <summary>
-            Sets a new user password for key derivation
-            </summary>
-            <param name="newPassword">New password to use</param>
-            <returns>True if password was successfully set</returns>
-        </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.ValidatePassword(System.String)">
-            <summary>
-            Validates if the provided password is correct
-            </summary>
-            <param name="password">Password to validate</param>
-            <returns>True if password is valid</returns>
-        </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.GetOrCreateBaseKey(System.String)">
-            <summary>
-            Gets the base key from secure storage or creates a new one if it doesn't exist
-            </summary>
-            <param name="userPassword">Optional user password to include in notification</param>
-            <returns>Base key bytes</returns>
-        </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.SendNewDeviceRegistrationEmailAsync(System.String)">
-            <summary>
-            Sends an email notification about new device registration
+            Saves email settings to secure encrypted storage
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.GetLocalIPAddress">
+        <member name="M:Seek.API.Security.New.SecureSettingsManager.LoadSecureSettings">
             <summary>
-            Gets the local IP address of the machine
+            Loads secure settings from encrypted storage
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.GenerateRandomKey">
+        <member name="M:Seek.API.Security.New.SecureSettingsManager.SaveSecureSettings(Seek.API.Security.New.SecureApplicationSettings)">
             <summary>
-            Generates a cryptographically strong random key
+            Saves secure settings to encrypted storage
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.RetrieveKeyFromRegistry">
+        <member name="M:Seek.API.Security.New.SecureSettingsManager.EncryptData(System.String,System.String)">
             <summary>
-            Retrieves the key from the Windows Registry
+            Encrypts data using AES with the provided key
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.StoreKeyInRegistry(System.Byte[])">
+        <member name="M:Seek.API.Security.New.SecureSettingsManager.DecryptData(System.Byte[],System.String)">
             <summary>
-            Stores the key in the Windows Registry
+            Decrypts data using AES with the provided key
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.RetrieveKeyFromFile">
+        <member name="T:Seek.API.Security.New.SecureApplicationSettings">
             <summary>
-            Retrieves the key from a file
+            Class to hold all secure application settings
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.StoreKeyInFile(System.Byte[])">
+        <member name="T:Seek.API.Security.New.SqliteEncryptionInterceptorExtensions">
             <summary>
-            Stores the key in a file
+            Extension methods for the SqliteEncryptionInterceptor
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.BindKeyToHardware(System.Byte[])">
+        <member name="M:Seek.API.Security.New.SqliteEncryptionInterceptorExtensions.CreateWithVerification(System.IServiceProvider,System.String)">
             <summary>
-            Binds the key to hardware-specific identifiers
+            Creates an enhanced SqliteEncryptionInterceptor that checks for verification
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.GetMachineUniqueIdentifier">
+        <member name="T:Seek.API.Security.New.VerificationSqliteEncryptionInterceptor">
             <summary>
-            Gets a unique identifier for the current machine
+            SqliteEncryptionInterceptor that checks for application verification
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.DeriveKeyFromPassword(System.String,System.Byte[])">
+        <member name="T:Seek.API.Security.New.StartupExtensions">
             <summary>
-            Derives a key from a password and additional entropy
+            Extensions for configuring security services in application startup
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.DeriveVerificationBytes(System.String,System.Byte[])">
+        <member name="M:Seek.API.Security.New.StartupExtensions.AddSeekSecurityServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
-            Derives verification bytes from password and key
+            Adds all security-related services to the service collection
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.StoreVerificationHash(System.Byte[])">
+        <member name="M:Seek.API.Security.New.StartupExtensions.UseSeekSecurity(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
             <summary>
-            Stores the verification hash
+            Configures security middleware for the application
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.RetrieveVerificationHash">
+        <member name="M:Seek.API.Security.New.StartupExtensions.InitializeSecureSettings(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
             <summary>
-            Retrieves the verification hash
+            Initializes secure settings by transferring from appsettings to encrypted storage
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.ProtectData(System.Byte[])">
+        <member name="T:Seek.API.Security.New.VerificationService">
             <summary>
-            Protects data using DPAPI or other encryption
+            Service that manages application verification through email codes
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.UnprotectData(System.Byte[])">
+        <member name="M:Seek.API.Security.New.VerificationService.GenerateVerificationCodeAsync">
             <summary>
-            Unprotects data using DPAPI or other decryption
+            Generates a new verification code and stores its hash
+            </summary>
+            <returns>The generated verification code</returns>
+        </member>
+        <member name="M:Seek.API.Security.New.VerificationService.VerifyCodeAsync(System.String)">
+            <summary>
+            Verifies if the provided code matches the stored hash
+            </summary>
+            <param name="code">The verification code to verify</param>
+            <returns>True if verification was successful, false otherwise</returns>
+        </member>
+        <member name="M:Seek.API.Security.New.VerificationService.IsVerificationCompleted">
+            <summary>
+            Checks if the application has been verified
+            </summary>
+            <returns>True if the application is verified, false otherwise</returns>
+        </member>
+        <member name="M:Seek.API.Security.New.VerificationService.GetVerificationStatusAsync">
+            <summary>
+            Gets the verification status details
+            </summary>
+            <returns>A tuple containing verification status and when it was verified (if applicable)</returns>
+        </member>
+        <member name="M:Seek.API.Security.New.VerificationService.ResetVerificationAsync">
+            <summary>
+            Resets the verification status, requiring a new verification
+            </summary>
+            <returns>True if successfully reset, false otherwise</returns>
+        </member>
+        <member name="T:Seek.API.Services.Integration.SecurityServiceRegistration">
+            <summary>
+            Helper class for registering all security services
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.GetNonWindowsProtectionKey">
+        <member name="M:Seek.API.Services.Integration.SecurityServiceRegistration.RegisterSecurityServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
-            Gets a protection key for non-Windows platforms
+            Register all services required for the security implementation
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.SlowEquals(System.Byte[],System.Byte[])">
+        <member name="M:Seek.API.Services.Integration.SecurityServiceRegistration.RegisterSecurityServicesForTesting(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
-            Time-constant comparison of two byte arrays to prevent timing attacks
+            Register services for simpler integration tests
             </summary>
         </member>
-        <member name="M:Seek.API.Security.SecureKeyManager.ProtectKey(System.Byte[])">
+        <member name="T:Seek.API.Services.Integration.StartupSecurityExample">
             <summary>
-            Protects a key with additional encryption
+            Example implementation of the security features in the StartUp class
             </summary>
         </member>
         <member name="T:Seek.API.SqliteEncryptionInterceptor">
@@ -176,7 +237,7 @@
             Factory for creating SQLite encryption interceptors with appropriate key management
             </summary>
         </member>
-        <member name="M:Seek.API.SqliteEncryptionInterceptorFactory.Create(Seek.API.Security.SecureKeyManager,System.String,Microsoft.Extensions.Logging.ILogger{Seek.API.SqliteEncryptionInterceptor},System.String)">
+        <member name="M:Seek.API.SqliteEncryptionInterceptorFactory.Create(Seek.Core.Security.SecureKeyManager,System.String,Microsoft.Extensions.Logging.ILogger{Seek.API.SqliteEncryptionInterceptor},System.String)">
             <summary>
             Creates an interceptor with a secure key from the key manager or falls back to a provided key
             </summary>

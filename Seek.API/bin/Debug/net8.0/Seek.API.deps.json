@@ -2838,7 +2838,9 @@
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "Microsoft.AspNetCore.Mvc.Core": "2.3.0",
-          "Microsoft.EntityFrameworkCore": "9.0.7"
+          "Microsoft.EntityFrameworkCore": "9.0.7",
+          "System.Management": "9.0.7",
+          "System.Security.Cryptography.ProtectedData": "8.0.0"
         },
         "runtime": {
           "Seek.Core.dll": {
@@ -2854,6 +2856,8 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "9.0.7",
           "QRCoder": "1.6.0",
           "Seek.Core": "1.0.0",
+          "System.Management": "9.0.7",
+          "System.Security.Cryptography.ProtectedData": "8.0.0",
           "System.Security.Cryptography.Xml": "9.0.7"
         },
         "runtime": {

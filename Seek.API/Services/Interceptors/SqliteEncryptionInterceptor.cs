@@ -1,12 +1,13 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
+using Seek.Core.Security;
 using System;
 using System.Data.Common;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Seek.API
+namespace Seek.API.Services.Interceptors
 {
     /// <summary>
     /// Interceptor that applies encryption settings to SQLite connections
@@ -100,7 +101,7 @@ namespace Seek.API
         /// Creates an interceptor with a secure key from the key manager or falls back to a provided key
         /// </summary>
         public static SqliteEncryptionInterceptor Create(
-            Security.SecureKeyManager keyManager,
+            SecureKeyManager keyManager,
             string fallbackKey,
             ILogger<SqliteEncryptionInterceptor> logger,
             string userPassword = null)

@@ -3,15 +3,16 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Seek.API.Security.New;
+using Seek.API.Services.Interceptors;
 using Seek.API.Services.System;
 using Seek.Core;
+using Seek.Core.Security;
 using Seek.EF;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Data;
 using System.Data.Common;
-using System.Text;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Seek.API
 {
@@ -26,9 +27,11 @@ namespace Seek.API
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            // Initialize SQLCipher
+            // 1. Add security services first
+            services.AddSeekSecurityServices(_configuration);
+            // 2. Initialize SQLCipher
             InitializeSqlCipher();
-            // Configure database services
+            // 3. Configure database services with encryption
             ConfigureDatabaseServices(services);
 
             // Add framework services
@@ -39,8 +42,8 @@ namespace Seek.API
             services.AddScoped<DefaultDataService>();
 
             // Configure Email Service
-            services.Configure<Security.EmailSettings>(_configuration.GetSection("EmailSettings"));
-            services.AddSingleton<Security.EmailService>();
+            services.Configure<EmailSettings>(_configuration.GetSection("EmailSettings"));
+            services.AddSingleton<EmailService>();
 
             // Add API versioning
             services.AddApiVersioning(options =>
@@ -60,8 +63,14 @@ namespace Seek.API
         }
         public void Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider)
         {
-            // Initialize database before anything else
+            // 1. Initialize secure settings
+            app.InitializeSecureSettings();
+
+            // 2. Initialize database before anything else
             InitializeDatabase(app);
+
+            // 3. Add verification middleware (checks if app is verified)
+            app.UseSeekSecurity();
 
             // Configure environment-specific middleware
             if (_environment.IsDevelopment())
@@ -106,14 +115,27 @@ namespace Seek.API
         private void ConfigureDatabaseServices(IServiceCollection services)
         {
             // Register SecureKeyManager as a singleton
-            services.AddSingleton<Security.SecureKeyManager>(provider =>
-                new Security.SecureKeyManager(
+            // Register SecureKeyManager as a singleton (if not already registered)
+            if (services.BuildServiceProvider().GetService<SecureKeyManager>() == null)
+            {
+                services.AddSingleton<SecureKeyManager>(provider =>
+                new SecureKeyManager(
                     Directory.GetCurrentDirectory(),
-                    provider.GetRequiredService<ILogger<Security.SecureKeyManager>>(),
-                    provider.GetService<Security.EmailService>()
+                    provider.GetRequiredService<ILogger<SecureKeyManager>>(),
+                    provider.GetService<EmailService>()
                 )
             );
-
+            }
+            // Register VerificationService (if not already registered)
+            if (services.BuildServiceProvider().GetService<VerificationService>() == null)
+            {
+                services.AddSingleton<VerificationService>(provider =>
+                    new VerificationService(
+                        Directory.GetCurrentDirectory(),
+                        provider.GetRequiredService<ILogger<VerificationService>>()
+                    )
+                );
+            }
             var connectionString = GetConnectionString();
 
             // Ensure database directory exists
@@ -122,7 +144,7 @@ namespace Seek.API
             // Register encryption interceptor using the factory with secure key management
             services.AddSingleton<SqliteEncryptionInterceptor>(provider =>
                 SqliteEncryptionInterceptorFactory.Create(
-                    provider.GetRequiredService<Security.SecureKeyManager>(),
+                    provider.GetRequiredService<SecureKeyManager>(),
                     _configuration["EncryptionKey"],  // Fallback key from configuration
                     provider.GetRequiredService<ILogger<SqliteEncryptionInterceptor>>(),
                     _configuration["UserPassword"]    // Optional user password
@@ -145,17 +167,17 @@ namespace Seek.API
                     // Create a temporary service provider if needed
                     using (var scope = new ServiceCollection()
                         .AddLogging()
-                        .Configure<Security.EmailSettings>(_configuration.GetSection("EmailSettings"))
-                        .AddSingleton<Security.EmailService>()
-                        .AddSingleton<Security.SecureKeyManager>(provider =>
-                            new Security.SecureKeyManager(
+                        .Configure<EmailSettings>(_configuration.GetSection("EmailSettings"))
+                        .AddSingleton<EmailService>()
+                        .AddSingleton<SecureKeyManager>(provider =>
+                            new SecureKeyManager(
                                 Directory.GetCurrentDirectory(),
-                                provider.GetRequiredService<ILogger<Security.SecureKeyManager>>(),
-                                provider.GetService<Security.EmailService>()
+                                provider.GetRequiredService<ILogger<SecureKeyManager>>(),
+                                provider.GetService<EmailService>()
                             ))
                         .BuildServiceProvider())
                     {
-                        var keyManager = scope.GetRequiredService<Security.SecureKeyManager>();
+                        var keyManager = scope.GetRequiredService<SecureKeyManager>();
                         var userPassword = _configuration["UserPassword"];
                         encryptionKey = keyManager.GetEncryptionKey(userPassword);
                         Log.Information("SQLite: Using securely generated encryption key");

@@ -5,31 +5,98 @@ using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using Seek.Core.IRepositories.Database;
+using System.Security.Cryptography;
+using Seek.Core.IRepositories.System;
 
 namespace Seek.EF.Repositories.Database
 {
-    public class Repo_Database_Security : IRepo_Database_Security
+    public class Repo_Database_Security : IRepo_Database_Security, IDisposable
     {
         private readonly ILogger<Repo_Database_Security> _logger;
-        private readonly IConfiguration _configuration;
-        public Repo_Database_Security(ILogger<Repo_Database_Security> logger, IConfiguration configuration)
+        private readonly IRepo_SecureKeyManager _keyManager;
+        private readonly SemaphoreSlim _dbLock = new SemaphoreSlim(1, 1);
+        private readonly string _basePath;
+
+        public Repo_Database_Security(
+            ILogger<Repo_Database_Security> logger,
+            IRepo_SecureKeyManager keyManager)
         {
             _logger = logger;
-            _configuration = configuration;
-
+            _keyManager = keyManager;
+            _basePath = Path.Combine(Directory.GetCurrentDirectory(), "Database");
         }
-        public async Task<(bool Success, string Message)> DecryptDatabaseAsync(string encryptedDbPath, string plainDbPath, string encryptionKey)
-        {
-            // Retrieve encryption key from configuration
-            var configuredEncryptionKey = _configuration["EncryptionKey"];
 
-            if (encryptionKey != configuredEncryptionKey)
-            {
-                _logger.LogWarning("SQLite : Incorrect encryption key provided.");
-                return (false, "SQLite : Incorrect encryption key.");
-            }
+        public async Task<(bool Success, string Message)> DecryptDatabaseAsync(
+            string encryptedDbPath,
+            string plainDbPath,
+            string verificationKey)
+        {
+            await _dbLock.WaitAsync();
             try
             {
+                // Verify the key matches our stored key
+                if (!await _keyManager.VerifyKeyAsync(verificationKey))
+                {
+                    return (false, "Invalid verification key");
+                }
+
+                // Get the actual encryption key from key manager
+                var encryptionKey = await _keyManager.GetEncryptionKeyAsync();
+
+                // Create decryption directory if needed
+                var decryptionDir = Path.GetDirectoryName(plainDbPath);
+                if (!Directory.Exists(decryptionDir))
+                {
+                    Directory.CreateDirectory(decryptionDir);
+                }
+
+                return await DecryptInternalAsync(encryptedDbPath, plainDbPath, encryptionKey);
+            }
+            finally
+            {
+                _dbLock.Release();
+            }
+        }
+
+        public async Task<(bool Success, string Message)> EncryptDatabaseAsync(
+            string plainDbPath,
+            string encryptedDbPath,
+            string encryptionKey = null)
+        {
+            await _dbLock.WaitAsync();
+            try
+            {
+                // Use provided key or fall back to stored key
+                var keyToUse = encryptionKey ?? await _keyManager.GetEncryptionKeyAsync();
+
+                // Create encryption directory if needed
+                var encryptionDir = Path.GetDirectoryName(encryptedDbPath);
+                if (!Directory.Exists(encryptionDir))
+                {
+                    Directory.CreateDirectory(encryptionDir);
+                }
+
+                return await EncryptInternalAsync(plainDbPath, encryptedDbPath, keyToUse);
+            }
+            finally
+            {
+                _dbLock.Release();
+            }
+        }
+
+        private async Task<(bool Success, string Message)> DecryptInternalAsync(
+            string encryptedDbPath,
+            string plainDbPath,
+            string encryptionKey)
+        {
+            try
+            {
+                // Verify the key first
+                if (!await VerifyEncryptionKey(encryptedDbPath, encryptionKey))
+                {
+                    return (false, "Invalid encryption key");
+                }
+
                 using (var connection = new SqliteConnection($"Data Source={encryptedDbPath}"))
                 {
                     await connection.OpenAsync();
@@ -39,16 +106,6 @@ namespace Seek.EF.Repositories.Database
                         // Set the key for decryption
                         command.CommandText = $"PRAGMA key = '{encryptionKey}';";
                         await command.ExecuteNonQueryAsync();
-
-                        // Verify decryption by executing a simple query
-                        command.CommandText = "SELECT name FROM sqlite_master LIMIT 1;";
-                        var result = await command.ExecuteScalarAsync();
-
-                        if (result == null || result == DBNull.Value)
-                        {
-                            _logger.LogWarning("SQLite : Failed to decrypt the database with the provided key.");
-                            return (false, "SQLite : Incorrect password or the database could not be decrypted.");
-                        }
 
                         // Attach plaintext database
                         command.CommandText = $"ATTACH DATABASE '{plainDbPath}' AS plaintext KEY '';";
@@ -61,74 +118,125 @@ namespace Seek.EF.Repositories.Database
                         // Detach plaintext database
                         command.CommandText = "DETACH DATABASE plaintext;";
                         await command.ExecuteNonQueryAsync();
-
-                        await connection.CloseAsync();
                     }
                 }
-                // Backup the decrypted database
-                var tempDataDir = Path.Combine(Path.GetDirectoryName(encryptedDbPath), "Decrypt");
-                Directory.CreateDirectory(tempDataDir);
-                var timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                var backupPath = Path.Combine(tempDataDir, $"decrypted_{timestamp}.db");
-                File.Move(plainDbPath, backupPath);
 
-                _logger.LogInformation("SQLite : Database decrypted successfully.");
-                return (true, "SQLite : Database decrypted successfully.");
-            }
-            catch (SqliteException sqlEx)
-            {
-                _logger.LogError(sqlEx, "SQLite : SQL error occurred during decryption");
-                return (false, "SQLite : An error occurred while decrypting the database. Please check the password and try again.");
+                // Verify the decrypted database
+                if (!await VerifyDatabaseIntegrity(plainDbPath))
+                {
+                    File.Delete(plainDbPath);
+                    return (false, "Decryption failed - integrity check failed");
+                }
+
+                return (true, $"Database successfully decrypted to {plainDbPath}");
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "SQLite : Unexpected error during decryption");
-                return (false, "SQLite : An unexpected error occurred during decryption.");
+                _logger.LogError(ex, "Database decryption failed");
+                return (false, $"Decryption failed: {ex.Message}");
             }
         }
-        public async Task<(bool Success, string Message)> EncryptDatabaseAsync(string plainDbPath, string encryptedDbPath, string encryptionKey)
+
+        private async Task<(bool Success, string Message)> EncryptInternalAsync(
+            string plainDbPath,
+            string encryptedDbPath,
+            string encryptionKey)
         {
             try
             {
+                // Verify the source database first
+                if (!await VerifyDatabaseIntegrity(plainDbPath))
+                {
+                    return (false, "Source database integrity check failed");
+                }
+
                 using (var connection = new SqliteConnection($"Data Source={plainDbPath}"))
                 {
                     await connection.OpenAsync();
 
                     using (var command = connection.CreateCommand())
                     {
-                        // Set the key to verify if unencrypted
-                        command.CommandText = "PRAGMA cipher_version;";
-                        await command.ExecuteScalarAsync();
-
-                        // Proceed with encryption
+                        // Attach encrypted database
                         command.CommandText = $"ATTACH DATABASE '{encryptedDbPath}' AS encrypted KEY '{encryptionKey}';";
                         await command.ExecuteNonQueryAsync();
 
+                        // Export encrypted data
                         command.CommandText = "SELECT sqlcipher_export('encrypted');";
                         await command.ExecuteNonQueryAsync();
 
+                        // Detach encrypted database
                         command.CommandText = "DETACH DATABASE encrypted;";
                         await command.ExecuteNonQueryAsync();
-
-                        await connection.CloseAsync();
                     }
                 }
 
-                // Backup encrypted database
-                var tempDataDir = Path.Combine(Path.GetDirectoryName(plainDbPath), "../Encrypted");
-                Directory.CreateDirectory(tempDataDir);
-                var timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                var backupPath = Path.Combine(tempDataDir, $"encrypted_{timestamp}.db");
-                File.Move(encryptedDbPath, backupPath);
+                // Verify the encrypted database
+                if (!await VerifyEncryptionKey(encryptedDbPath, encryptionKey))
+                {
+                    File.Delete(encryptedDbPath);
+                    return (false, "Encryption verification failed");
+                }
 
-                _logger.LogInformation($"SQLite : Database encrypted successfully");
-                return (true, "SQLite : Database encrypted successfully");
+                return (true, $"Database successfully encrypted to {encryptedDbPath}");
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "SQLite : Failed to encrypt database");
-                return (false, "SQLite : Failed to encrypt database");
+                _logger.LogError(ex, "Database encryption failed");
+                return (false, $"Encryption failed: {ex.Message}");
             }
         }
-    }
+
+        private async Task<bool> VerifyEncryptionKey(string dbPath, string key)
+        {
+            try
+            {
+                using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+                {
+                    await connection.OpenAsync();
+
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = $"PRAGMA key = '{key}';";
+                        await command.ExecuteNonQueryAsync();
+
+                        command.CommandText = "SELECT count(*) FROM sqlite_master;";
+                        var result = await command.ExecuteScalarAsync();
+                        return result != null && result != DBNull.Value;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private async Task<bool> VerifyDatabaseIntegrity(string dbPath)
+        {
+            try
+            {
+                using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+                {
+                    await connection.OpenAsync();
+
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = "PRAGMA integrity_check;";
+                        var result = await command.ExecuteScalarAsync() as string;
+                        return result?.ToLower() == "ok";
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public void Dispose()
+        {
+            _dbLock?.Dispose();
+        }
+    
+}
 }

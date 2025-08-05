@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "Seek.API.Controllers.Database_Existence_CheckerController",
+    "ContainingType": "Seek.API.Controllers.Database.Database_Existence_CheckerController",
     "Method": "CheckDatabase",
     "RelativePath": "api/Database_Existence_Checker/check",
     "HttpMethod": "GET",
@@ -16,7 +16,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Seek.API.Controllers.DatabaseSecurityController",
+    "ContainingType": "Seek.API.Controllers.Database.DatabaseSecurityController",
     "Method": "Decrypt",
     "RelativePath": "api/DatabaseSecurity/Decrypt",
     "HttpMethod": "POST",
@@ -37,7 +37,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Seek.API.Controllers.DatabaseSecurityController",
+    "ContainingType": "Seek.API.Controllers.Database.DatabaseSecurityController",
     "Method": "Encrypt",
     "RelativePath": "api/DatabaseSecurity/Encrypt",
     "HttpMethod": "POST",
@@ -48,6 +48,112 @@
         "Name": "databasePath",
         "Type": "System.String",
         "IsRequired": false
+      },
+      {
+        "Name": "api-version",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Seek.API.Controllers.System.SecureSettingsController",
+    "Method": "UpdateEmailSettings",
+    "RelativePath": "api/v1/SecureSettings/email",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "emailSettings",
+        "Type": "Seek.Core.Security.EmailSettings",
+        "IsRequired": true
+      },
+      {
+        "Name": "api-version",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Seek.API.Controllers.System.SecureSettingsController",
+    "Method": "GetEmailSettings",
+    "RelativePath": "api/v1/SecureSettings/email",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "api-version",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Seek.API.Controllers.System.VerificationController",
+    "Method": "ResetVerification",
+    "RelativePath": "api/v1/Verification/reset",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "api-version",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Seek.API.Controllers.System.VerificationController",
+    "Method": "SendVerificationCode",
+    "RelativePath": "api/v1/Verification/send-code",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "api-version",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Seek.API.Controllers.System.VerificationController",
+    "Method": "GetVerificationStatus",
+    "RelativePath": "api/v1/Verification/status",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "api-version",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Seek.API.Controllers.System.VerificationController",
+    "Method": "VerifyApplication",
+    "RelativePath": "api/v1/Verification/verify",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Seek.API.Controllers.System.VerificationRequest",
+        "IsRequired": true
       },
       {
         "Name": "api-version",
