@@ -3,36 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\nabih\\github\\Seek_Client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|c:\\users\\nabih\\github\\seek_client\\seek.api\\services\\integration\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|solutionrelative:seek.api\\services\\integration\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|c:\\users\\nabih\\github\\seek_client\\seek.api\\services\\integration\\startupimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|solutionrelative:seek.api\\services\\integration\\startupimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|c:\\users\\nabih\\github\\seek_client\\seek.api\\security\\new\\startupextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|solutionrelative:seek.api\\security\\new\\startupextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|c:\\users\\nabih\\github\\seek_client\\seek.api\\security\\new\\securesettingsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|solutionrelative:seek.api\\security\\new\\securesettingsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|c:\\users\\nabih\\github\\seek_client\\seek.api\\controllers\\system\\securesettingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|solutionrelative:seek.api\\controllers\\system\\securesettingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6BA5CD2-9AD1-474A-8785-AD615C7DFAF8}|Seek.Core\\Seek.Core.csproj|c:\\users\\nabih\\github\\seek_client\\seek.core\\security\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6BA5CD2-9AD1-474A-8785-AD615C7DFAF8}|Seek.Core\\Seek.Core.csproj|solutionrelative:seek.core\\security\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6BA5CD2-9AD1-474A-8785-AD615C7DFAF8}|Seek.Core\\Seek.Core.csproj|c:\\users\\nabih\\github\\seek_client\\seek.core\\security\\securekeymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6BA5CD2-9AD1-474A-8785-AD615C7DFAF8}|Seek.Core\\Seek.Core.csproj|solutionrelative:seek.core\\security\\securekeymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|c:\\users\\nabih\\github\\seek_client\\seek.api\\security\\new\\databaseencryptionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|solutionrelative:seek.api\\security\\new\\databaseencryptionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|c:\\users\\nabih\\github\\seek_client\\seek.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|solutionrelative:seek.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|c:\\users\\nabih\\github\\seek_client\\seek.api\\services\\system\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|solutionrelative:seek.api\\services\\system\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -47,80 +31,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ServiceRegistration.cs",
-              "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Services\\Integration\\ServiceRegistration.cs",
-              "RelativeDocumentMoniker": "Seek.API\\Services\\Integration\\ServiceRegistration.cs",
-              "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Services\\Integration\\ServiceRegistration.cs",
-              "RelativeToolTip": "Seek.API\\Services\\Integration\\ServiceRegistration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAbAAAAAAAAAA==",
+              "Title": "StartupImplementation.cs",
+              "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Services\\Integration\\StartupImplementation.cs",
+              "RelativeDocumentMoniker": "Seek.API\\Services\\Integration\\StartupImplementation.cs",
+              "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Services\\Integration\\StartupImplementation.cs",
+              "RelativeToolTip": "Seek.API\\Services\\Integration\\StartupImplementation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T06:31:28.875Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SecureSettingsController.cs",
-              "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Controllers\\System\\SecureSettingsController.cs",
-              "RelativeDocumentMoniker": "Seek.API\\Controllers\\System\\SecureSettingsController.cs",
-              "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Controllers\\System\\SecureSettingsController.cs",
-              "RelativeToolTip": "Seek.API\\Controllers\\System\\SecureSettingsController.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAASwFgAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T06:30:20.001Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SecureSettingsManager.cs",
-              "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Security\\New\\SecureSettingsManager.cs",
-              "RelativeDocumentMoniker": "Seek.API\\Security\\New\\SecureSettingsManager.cs",
-              "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Security\\New\\SecureSettingsManager.cs",
-              "RelativeToolTip": "Seek.API\\Security\\New\\SecureSettingsManager.cs",
-              "ViewState": "AgIAAMEAAAAAAAAAAAAgwMgAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T13:42:07.583Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "EmailService.cs",
-              "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.Core\\Security\\EmailService.cs",
-              "RelativeDocumentMoniker": "Seek.Core\\Security\\EmailService.cs",
-              "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.Core\\Security\\EmailService.cs",
-              "RelativeToolTip": "Seek.Core\\Security\\EmailService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAUwBMAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T13:36:56.375Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SecureKeyManager.cs",
-              "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.Core\\Security\\SecureKeyManager.cs",
-              "RelativeDocumentMoniker": "Seek.Core\\Security\\SecureKeyManager.cs",
-              "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.Core\\Security\\SecureKeyManager.cs",
-              "RelativeToolTip": "Seek.Core\\Security\\SecureKeyManager.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAWwCEAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T13:04:32.974Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DatabaseEncryptionExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Security\\New\\DatabaseEncryptionExtensions.cs",
-              "RelativeDocumentMoniker": "Seek.API\\Security\\New\\DatabaseEncryptionExtensions.cs",
-              "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Security\\New\\DatabaseEncryptionExtensions.cs",
-              "RelativeToolTip": "Seek.API\\Security\\New\\DatabaseEncryptionExtensions.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAASwBoAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T13:04:45.583Z",
+              "WhenOpened": "2025-08-09T09:31:07.665Z",
               "EditorCaption": ""
             },
             {
@@ -131,22 +49,35 @@
               "RelativeDocumentMoniker": "Seek.API\\Security\\New\\StartupExtensions.cs",
               "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Security\\New\\StartupExtensions.cs",
               "RelativeToolTip": "Seek.API\\Security\\New\\StartupExtensions.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAwwDQAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA4AAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T13:03:26.526Z",
+              "WhenOpened": "2025-08-09T09:28:07.669Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
+              "Title": "ServiceRegistration.cs",
+              "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Services\\System\\ServiceRegistration.cs",
+              "RelativeDocumentMoniker": "Seek.API\\Services\\System\\ServiceRegistration.cs",
+              "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Services\\System\\ServiceRegistration.cs",
+              "RelativeToolTip": "Seek.API\\Services\\System\\ServiceRegistration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-09T09:28:18.517Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "StartUp.cs",
               "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\StartUp.cs",
               "RelativeDocumentMoniker": "Seek.API\\StartUp.cs",
               "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\StartUp.cs",
               "RelativeToolTip": "Seek.API\\StartUp.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB0AAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAtwB4AAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T12:58:28.673Z",
+              "WhenOpened": "2025-08-09T09:15:30.281Z",
               "EditorCaption": ""
             }
           ]

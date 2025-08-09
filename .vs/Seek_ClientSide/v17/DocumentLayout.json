@@ -1,54 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\nabih\\github\\Seek_Client\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|c:\\users\\nabih\\github\\seek_client\\seek.api\\services\\integration\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B91BF4D7-1EA7-49EC-9D74-15C905F098D6}|Seek.API\\Seek.API.csproj|solutionrelative:seek.api\\services\\integration\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6BA5CD2-9AD1-474A-8785-AD615C7DFAF8}|Seek.Core\\Seek.Core.csproj|c:\\users\\nabih\\github\\seek_client\\seek.core\\security\\securekeymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6BA5CD2-9AD1-474A-8785-AD615C7DFAF8}|Seek.Core\\Seek.Core.csproj|solutionrelative:seek.core\\security\\securekeymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ServiceRegistration.cs",
-              "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Services\\Integration\\ServiceRegistration.cs",
-              "RelativeDocumentMoniker": "Seek.API\\Services\\Integration\\ServiceRegistration.cs",
-              "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.API\\Services\\Integration\\ServiceRegistration.cs",
-              "RelativeToolTip": "Seek.API\\Services\\Integration\\ServiceRegistration.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAAwDUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T07:10:38.344Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SecureKeyManager.cs",
-              "DocumentMoniker": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.Core\\Security\\SecureKeyManager.cs",
-              "RelativeDocumentMoniker": "Seek.Core\\Security\\SecureKeyManager.cs",
-              "ToolTip": "C:\\Users\\nabih\\github\\Seek_Client\\Seek.Core\\Security\\SecureKeyManager.cs",
-              "RelativeToolTip": "Seek.Core\\Security\\SecureKeyManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkCAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T07:04:17.743Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

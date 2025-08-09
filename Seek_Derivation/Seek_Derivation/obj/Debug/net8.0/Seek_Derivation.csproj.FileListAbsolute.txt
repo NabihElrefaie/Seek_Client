@@ -1,0 +1,14 @@
+C:\Users\nabih\source\repos\Seek_Derivation\Seek_Derivation\obj\Debug\net8.0\Seek_Derivation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nabih\source\repos\Seek_Derivation\Seek_Derivation\obj\Debug\net8.0\Seek_Derivation.AssemblyInfoInputs.cache
+C:\Users\nabih\source\repos\Seek_Derivation\Seek_Derivation\obj\Debug\net8.0\Seek_Derivation.AssemblyInfo.cs
+C:\Users\nabih\source\repos\Seek_Derivation\Seek_Derivation\obj\Debug\net8.0\Seek_Derivation.csproj.CoreCompileInputs.cache
+C:\Users\nabih\source\repos\Seek_Derivation\Seek_Derivation\bin\Debug\net8.0\Seek_Derivation.exe
+C:\Users\nabih\source\repos\Seek_Derivation\Seek_Derivation\bin\Debug\net8.0\Seek_Derivation.deps.json
+C:\Users\nabih\source\repos\Seek_Derivation\Seek_Derivation\bin\Debug\net8.0\Seek_Derivation.runtimeconfig.json
+C:\Users\nabih\source\repos\Seek_Derivation\Seek_Derivation\bin\Debug\net8.0\Seek_Derivation.dll
+C:\Users\nabih\source\repos\Seek_Derivation\Seek_Derivation\bin\Debug\net8.0\Seek_Derivation.pdb
+C:\Users\nabih\source\repos\Seek_Derivation\Seek_Derivation\obj\Debug\net8.0\Seek_Derivation.dll
+C:\Users\nabih\source\repos\Seek_Derivation\Seek_Derivation\obj\Debug\net8.0\refint\Seek_Derivation.dll
+C:\Users\nabih\source\repos\Seek_Derivation\Seek_Derivation\obj\Debug\net8.0\Seek_Derivation.pdb
+C:\Users\nabih\source\repos\Seek_Derivation\Seek_Derivation\obj\Debug\net8.0\Seek_Derivation.genruntimeconfig.cache
+C:\Users\nabih\source\repos\Seek_Derivation\Seek_Derivation\obj\Debug\net8.0\ref\Seek_Derivation.dll

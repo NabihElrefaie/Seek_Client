@@ -4,7 +4,7 @@
         <name>Seek.API</name>
     </assembly>
     <members>
-        <member name="M:Seek.API.Controllers.System.SecureSettingsController.UpdateEmailSettings(Seek.Core.Security.EmailSettings)">
+        <member name="M:Seek.API.Controllers.System.SecureSettingsController.UpdateEmailSettings(Seek.Core.Dtos.Settings.EmailSettings)">
             <summary>
             Updates secure email settings
             </summary>
@@ -98,7 +98,7 @@
             Gets secure email settings, either from encrypted storage or falls back to configuration
             </summary>
         </member>
-        <member name="M:Seek.API.Security.New.SecureSettingsManager.SaveSecureEmailSettings(Seek.Core.Security.EmailSettings)">
+        <member name="M:Seek.API.Security.New.SecureSettingsManager.SaveSecureEmailSettings(Seek.Core.Dtos.Settings.EmailSettings)">
             <summary>
             Saves email settings to secure encrypted storage
             </summary>
@@ -148,11 +148,6 @@
             Extensions for configuring security services in application startup
             </summary>
         </member>
-        <member name="M:Seek.API.Security.New.StartupExtensions.AddSeekSecurityServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
-            <summary>
-            Adds all security-related services to the service collection
-            </summary>
-        </member>
         <member name="M:Seek.API.Security.New.StartupExtensions.UseSeekSecurity(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
             <summary>
             Configures security middleware for the application
@@ -199,32 +194,17 @@
             </summary>
             <returns>True if successfully reset, false otherwise</returns>
         </member>
-        <member name="T:Seek.API.Services.Integration.SecurityServiceRegistration">
-            <summary>
-            Helper class for registering all security services
-            </summary>
-        </member>
-        <member name="M:Seek.API.Services.Integration.SecurityServiceRegistration.RegisterSecurityServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
-            <summary>
-            Register all services required for the security implementation
-            </summary>
-        </member>
-        <member name="M:Seek.API.Services.Integration.SecurityServiceRegistration.RegisterSecurityServicesForTesting(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
-            <summary>
-            Register services for simpler integration tests
-            </summary>
-        </member>
         <member name="T:Seek.API.Services.Integration.StartupSecurityExample">
             <summary>
             Example implementation of the security features in the StartUp class
             </summary>
         </member>
-        <member name="T:Seek.API.SqliteEncryptionInterceptor">
+        <member name="T:Seek.API.Services.Interceptors.SqliteEncryptionInterceptor">
             <summary>
             Interceptor that applies encryption settings to SQLite connections
             </summary>
         </member>
-        <member name="M:Seek.API.SqliteEncryptionInterceptor.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Seek.API.SqliteEncryptionInterceptor},System.Boolean)">
+        <member name="M:Seek.API.Services.Interceptors.SqliteEncryptionInterceptor.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Seek.API.Services.Interceptors.SqliteEncryptionInterceptor},System.Boolean)">
             <summary>
             Creates a new instance of SqliteEncryptionInterceptor
             </summary>
@@ -232,12 +212,12 @@
             <param name="logger">Logger instance</param>
             <param name="allowKeyRefresh">Whether to allow refreshing the key from secure storage on connection open (default: false)</param>
         </member>
-        <member name="T:Seek.API.SqliteEncryptionInterceptorFactory">
+        <member name="T:Seek.API.Services.Interceptors.SqliteEncryptionInterceptorFactory">
             <summary>
             Factory for creating SQLite encryption interceptors with appropriate key management
             </summary>
         </member>
-        <member name="M:Seek.API.SqliteEncryptionInterceptorFactory.Create(Seek.Core.Security.SecureKeyManager,System.String,Microsoft.Extensions.Logging.ILogger{Seek.API.SqliteEncryptionInterceptor},System.String)">
+        <member name="M:Seek.API.Services.Interceptors.SqliteEncryptionInterceptorFactory.Create(Seek.Core.Security.SecureKeyManager,System.String,Microsoft.Extensions.Logging.ILogger{Seek.API.Services.Interceptors.SqliteEncryptionInterceptor},System.String)">
             <summary>
             Creates an interceptor with a secure key from the key manager or falls back to a provided key
             </summary>

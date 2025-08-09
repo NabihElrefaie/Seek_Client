@@ -67,7 +67,7 @@
     "Parameters": [
       {
         "Name": "emailSettings",
-        "Type": "Seek.Core.Security.EmailSettings",
+        "Type": "Seek.Core.Dtos.Settings.EmailSettings",
         "IsRequired": true
       },
       {

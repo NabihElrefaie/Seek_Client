@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nabih\\source\\repos\\Seek_Derivation\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CD0FC0F6-8734-4B38-9A17-57951B989C53}|Seek_Derivation\\Seek_Derivation.csproj|c:\\users\\nabih\\source\\repos\\seek_derivation\\seek_derivation\\cryptohelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD0FC0F6-8734-4B38-9A17-57951B989C53}|Seek_Derivation\\Seek_Derivation.csproj|solutionrelative:seek_derivation\\cryptohelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD0FC0F6-8734-4B38-9A17-57951B989C53}|Seek_Derivation\\Seek_Derivation.csproj|c:\\users\\nabih\\source\\repos\\seek_derivation\\seek_derivation\\emailsettingsdecryptiontool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD0FC0F6-8734-4B38-9A17-57951B989C53}|Seek_Derivation\\Seek_Derivation.csproj|solutionrelative:seek_derivation\\emailsettingsdecryptiontool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CryptoHelper.cs",
+              "DocumentMoniker": "C:\\Users\\nabih\\source\\repos\\Seek_Derivation\\Seek_Derivation\\CryptoHelper.cs",
+              "RelativeDocumentMoniker": "Seek_Derivation\\CryptoHelper.cs",
+              "ToolTip": "C:\\Users\\nabih\\source\\repos\\Seek_Derivation\\Seek_Derivation\\CryptoHelper.cs",
+              "RelativeToolTip": "Seek_Derivation\\CryptoHelper.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAADcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T08:23:52.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EmailSettingsDecryptionTool.cs",
+              "DocumentMoniker": "C:\\Users\\nabih\\source\\repos\\Seek_Derivation\\Seek_Derivation\\EmailSettingsDecryptionTool.cs",
+              "RelativeDocumentMoniker": "Seek_Derivation\\EmailSettingsDecryptionTool.cs",
+              "ToolTip": "C:\\Users\\nabih\\source\\repos\\Seek_Derivation\\Seek_Derivation\\EmailSettingsDecryptionTool.cs",
+              "RelativeToolTip": "Seek_Derivation\\EmailSettingsDecryptionTool.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAQwE0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T08:17:03.462Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -75,40 +75,6 @@ namespace Seek.Core.Security
         }
 
         /// <summary>
-        /// Sets a new user password for key derivation
-        /// </summary>
-        /// <param name="newPassword">New password to use</param>
-        /// <returns>True if password was successfully set</returns>
-        public bool SetUserPassword(string newPassword)
-        {
-            if (string.IsNullOrWhiteSpace(newPassword))
-            {
-                _logger.LogWarning("Attempt to set empty password was rejected");
-                return false;
-            }
-
-            try
-            {
-                byte[] baseKey = GetOrCreateBaseKey(newPassword);
-                byte[] hardwareBoundKey = BindKeyToHardware(baseKey);
-
-                // Generate a verification hash that we can use to validate the password later
-                byte[] verificationHash = DeriveVerificationBytes(newPassword, hardwareBoundKey);
-
-                // Store verification hash (but not the actual key)
-                StoreVerificationHash(verificationHash);
-
-                _logger.LogInformation("User password successfully set");
-                return true;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Failed to set user password");
-                return false;
-            }
-        }
-
-        /// <summary>
         /// Validates if the provided password is correct
         /// </summary>
         /// <param name="password">Password to validate</param>

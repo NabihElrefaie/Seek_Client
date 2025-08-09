@@ -8,20 +8,6 @@ namespace Seek.API.Security.New
     /// </summary>
     public static class StartupExtensions
     {
-        /// <summary>
-        /// Adds all security-related services to the service collection
-        /// </summary>
-        public static IServiceCollection AddSeekSecurityServices(this IServiceCollection services, IConfiguration configuration)
-        {
-            // Add database encryption services
-            services.AddDatabaseEncryptionServices();
-
-            // Configure Email Service
-            services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
-            services.AddSingleton<EmailService>();
-
-            return services;
-        }
 
         /// <summary>
         /// Configures security middleware for the application

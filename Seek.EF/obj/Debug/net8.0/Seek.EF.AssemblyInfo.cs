@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Seek.EF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b51d8153aa1ca0265596fb30800c342f085c17a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+76e0020d3bcf8be119e50fb1d28178a451d789b3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Seek.EF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Seek.EF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Seek.Core.Security;
 using System;
+using System.Data;
 using System.Data.Common;
 using System.Threading;
 using System.Threading.Tasks;
@@ -59,10 +60,10 @@ namespace Seek.API.Services.Interceptors
                     // Apply encryption key using PRAGMA after opening
                     sqliteConnection.StateChange += (sender, args) =>
                     {
-                        if (args.CurrentState == System.Data.ConnectionState.Open)
+                        if (args.CurrentState == ConnectionState.Open)
                         {
                             // Check if we need to refresh the key (only applicable if allowed and connection was closed)
-                            if (_allowKeyRefresh && args.OriginalState == System.Data.ConnectionState.Closed)
+                            if (_allowKeyRefresh && args.OriginalState == ConnectionState.Closed)
                             {
                                 // For production, implement a secure key refresh mechanism here
                                 // This is just a placeholder for the concept

@@ -7,6 +7,7 @@ using Seek.API.Security.New;
 using Seek.API.Services.Interceptors;
 using Seek.API.Services.System;
 using Seek.Core;
+using Seek.Core.Dtos.Settings;
 using Seek.Core.Security;
 using Seek.EF;
 using Serilog;
@@ -27,8 +28,6 @@ namespace Seek.API
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            // 1. Add security services first
-            services.AddSeekSecurityServices(_configuration);
             // 2. Initialize SQLCipher
             InitializeSqlCipher();
             // 3. Configure database services with encryption
@@ -37,13 +36,9 @@ namespace Seek.API
             // Add framework services
             services.AddCors();
             services.AddHttpContextAccessor();
-            services.AddRepositoryServices();
+            services.AddRepositoryServices(_configuration);
             services.AddAutoMapper(typeof(Mappings).Assembly);
             services.AddScoped<DefaultDataService>();
-
-            // Configure Email Service
-            services.Configure<EmailSettings>(_configuration.GetSection("EmailSettings"));
-            services.AddSingleton<EmailService>();
 
             // Add API versioning
             services.AddApiVersioning(options =>
@@ -114,7 +109,6 @@ namespace Seek.API
         }
         private void ConfigureDatabaseServices(IServiceCollection services)
         {
-            // Register SecureKeyManager as a singleton
             // Register SecureKeyManager as a singleton (if not already registered)
             if (services.BuildServiceProvider().GetService<SecureKeyManager>() == null)
             {
@@ -122,7 +116,7 @@ namespace Seek.API
                 new SecureKeyManager(
                     Directory.GetCurrentDirectory(),
                     provider.GetRequiredService<ILogger<SecureKeyManager>>(),
-                    provider.GetService<EmailService>()
+                    provider.GetService <EmailService>()
                 )
             );
             }
